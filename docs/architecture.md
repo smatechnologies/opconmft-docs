@@ -5,7 +5,7 @@ An alternate to the traditional OpCon - Agent - Application integration approach
 The approach requires that the application to be integrated supports a Rest-API, which then allows the application to function as the OpCon Agent. Enhancements 
 to the SMANetcom module provides new functionality that communicates directly with the application using standard Rest-API calls (GET, POST, PUT, DELETE).
 
-![Architecture Overview](/img/architecture-Overview.png)
+![Architecture Overview](../static/img/architecture-overview.png)
 
 OpCon provides the following functions:
 - stores the task definition as an OpConMFT Jobtype. 
