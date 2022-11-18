@@ -15,7 +15,7 @@ Component | Description
 **OpConMFT Agent**  | is the client functionality providing B2B file transfer functionality. 
 **OpConMFT Server** | is a full FTP server environment for receiving and routing incoming data as well as file sharing capabilities. 
 
-![OpConMFT Overview](/img/OpConMFT-Overview.png)
+![OpConMFT Overview](../static/img/OpConMFT-Overview.png)
 
 The OpCon MFT environment comprises of many components that work together to provide the full Managed File Transfer solution.
 
