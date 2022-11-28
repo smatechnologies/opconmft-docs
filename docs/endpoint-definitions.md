@@ -13,7 +13,7 @@ Endpoint Type | Description
 
 From the menu, select **Local Endpoints**.
 
-![Path Endpoints](../static/img/path-endpoints.png)
+![Path Endpoints](../static/img/local-endpoint-definition.png)
 
 To edit an existing definition, select the definition or select **Add Site** to create a new path endpoint.
 
