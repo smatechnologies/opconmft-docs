@@ -3,5 +3,9 @@ module.exports = {
     'index',
     'architecture',
     'endpoint-definitions',
+    'encryption-definitions',
+    'group-definitions',
+    'task-definitions',
+    'security',
   ],
 };
