@@ -1,6 +1,6 @@
 # Endpoint Definitions
 Endpoints define where the data must be retrieved from or deposited. Endpoints are defined using the RoboFTP Web Server. From the initial page, select 
-**Settings** and then **Managed Sites** for defining remote servers or **Local Endpoints** for defining UNC paths or directories.
+**SETTINGS** and then **MANAGED SITES** for defining remote servers or **LOCAL ENDPOINTS** for defining UNC paths or directories.
 
 There are two types of endpoints:
 
