@@ -37,10 +37,9 @@ provided on each request.
 The OpCon Agent LsamTypeId provides the indication that this agent type is a Rest-API agent and will be managed by this new capability. A LSAMTYPEID of 90 
 or greater will be interpreted as a Rest-API agent.
 
-During SMANetcom startup if a Rest-API agent is detected, the specific Rest-API agent information is retrieved from the database (address, port, token, etc). The 
+During SMANetcom startup if a Rest-API agent is detected, the specific Rest-API agent information is retrieved from the database (address, port, token, etc). The
 ProxyAgent for the Rest-API is started, passing the address, port and token information. A TX4 message type is then generated and passed to the ProxyAgent. During normal 
-operations a TXH message is generated and passed to the ProxyAgent. These messages are used to determine if the appliction is available and will set the specific 
-OpCon Agent into an **available** or **unavailable** status for task processing.
+operations a TXH message is generated and passed to the ProxyAgent. These messages are used to determine if the appliction is available and will set the specific OpCon Agent into an **available** or **unavailable** status for task processing.
 
 SMANetcom retrieves TX messages (TX1 or TX2) from the MSGS_TO_NETCOM table, checks the LSAMTYPEID of the message and if this is a Rest-API agent places it on the 
 approriate queue for the target ProxyAgent. The ProxyAgent processes the messages and returns the correctly formatted responses which are placed in the MSGS_TO_SAM
@@ -56,7 +55,7 @@ Rest-API requests are reformatted to TX message responses which are passed to th
  **Rest API Library**, **Rest-API Model Library** and the **MFT Model Library** when communicating with the OpConMFT Agent Rest-API.
 
 Whenever an OpCon task is started, a unique jobId is generated for the OpCon task. This means that if a task is restarted, a new jobId will be generated for the task. 
-This appraoch allows the information for specific task executions to be visible within the OpCon environment. OpConMFT has a similar implementation and everytime a task
+This approach allows the information for specific task executions to be visible within the OpCon environment. OpConMFT has a similar implementation and every time a task
 is started by the OpConMFT Agent a new jobId will be generated. The OpConMFT Agent maintains a table mapping the OpCon unique jobId (Integer portion) to the OpConMFT 
 jobId.
 
@@ -73,12 +72,12 @@ value is non zero, then the existing OpConMFT task must be restarted.
 #### New Task
 The ProxyAgent receives a TX1 message from SMANetcom and maps this to a **/api/job/start{groupName}.{correctedJobName}/withtag/{tagName}** POST function where the 
 tagName is the integer portion of the OpCon unique jobId. The request responds with the OpConMFT Agent jobId. The job running status, the OpCon Agent JobId and a 
-JORS file indentifier are returned to SMANetcom and passed to OpCon where the OpCon Agent jobId and JORS file identifier are stored in the SMASTER_AUX table 
+JORS file identifier are returned to SMANetcom and passed to OpCon where the OpCon Agent jobId and JORS file identifier are stored in the SMASTER_AUX table 
 associated with the OpCon task.
 
 The ProxyAgent then monitors the started task for completion (either successful or failed) by first retrieving the runid using **/api/run/bytag/{tagName}** a GET
 function where the tagName is the integer portion of the OpCon unique jobId to get the OpConMFT Agent task jobId and then using the **/api/run/status/{runid}** GET
-function to retrieve the status of the opConMFT Agent task. During each execution, if the task is still active, the contenets of the **last_message** field is 
+function to retrieve the status of the opConMFT Agent task. During each execution, if the task is still active, the contents of the **last_message** field is 
 returned to OpCon. If the job completes and it is successful, a 0 value for OpConAgent JobId will be returned as well as the completion code. If the OpConMFT task 
 failed, only the completion code will be returned.  
 
@@ -117,7 +116,7 @@ does not connect directly to the OpCon MFT Rest-API. Solution Manager only inter
 information from the associated OpConMFT Agent.
 
 ## Rest-API Client Library
-This library provides a set of generalized Rest-API calls required for communicating with a Rest-API application. It includes authenication methods as well as GET,
+This library provides a set of generalized Rest-API calls required for communicating with a Rest-API application. It includes authentication methods as well as GET,
 POST and PUT methods. It is used by the **ProxyAgent** agent and the **LSAMDataRetriever** to submit requests to the OpConMFT Agent.
 
 ## Rest-API Model Library
@@ -127,4 +126,4 @@ functions to support the OpConMFT Agent. These additional functions are used by 
 
 ## MFT Model Library
 This library provides the model definitions used by the OpConMFT Agent Rest-API. It is used by the **ProxyAgent** and the **LSAMDataRetriever** when submitting requests
-to the OPCONMFT Agenet Rest-API.  
+to the OpConMFT Agent Rest-API.  

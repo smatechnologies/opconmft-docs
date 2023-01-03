@@ -34,7 +34,7 @@ TX messages from SMANetcom, mapping them to OpConMFT Agent Rest-API calls.
 At a task start request, the OpCon unique jobId (integer portion) is passed to the OpConMFT Agent along with the task definition information. The ProxyAgent
 receives the OpConMFT unique jobId as part of a successful task start and this value is saved in the OpCon database for restarting a failed OpConMFT task.
 
-The ProxyAgent continously monitors the status of the OpConMFT Agent marking the Agent as available or unavailable for job starts.
+The ProxyAgent continuously monitors the status of the OpConMFT Agent marking the Agent as available or unavailable for job starts.
 
 ## LSAMDataRetriever
 The LSAMDataRetriever has been modified to support the retrieval of job logs from the OpConMFT Agent through the OpConMFT Rest-API. The joblog provides
@@ -62,7 +62,7 @@ Type       | Description
 **site**   | references a remote system and defines the the address, port, protocol and credentials required to access the site.
 
 An OpConMFT task consists of multiple steps representing the received task definition. These steps consist of creating the file set for the transfer,
-optionally using compression and or using encryption on the file set and transfering the file set to the destination.
+optionally using compression and or using encryption on the file set and transferring the file set to the destination.
 
 During the task execution, the OpConMFT Agent persists each completed step. If a step fails and the task is restarted, the task will restart from the 
 failed step.

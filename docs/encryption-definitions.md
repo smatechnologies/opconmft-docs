@@ -32,7 +32,7 @@ programs like Notepad.
 ## OpConMFT PGP Implementation
 The OpConMFT Agent is an FTP client and not a comprehensive PGP encryption tool, but does provide the basic functionality required to utilize PGP.
 
-The following functionality is provided by the Robo-FTP Configurator:
+The following functionality is provided by the OpConMFT Configurator:
  
 - The creation of private and public key(s).
 - The ability to export public keys to ASCII armored and non-ASCII armored files. ASCII armored key files are plain-text files; non-armored files are in a binary format. Exported public key files are signed by the matching  private key, if it is available.
@@ -43,7 +43,7 @@ The following functionality is provided by the Robo-FTP Configurator:
 PGP has the added advantage of compression. Much like a zip file, files that are encoded using PGP are also compressed. These file(s) are expanded and restored to their original state when they are decrypted by their intended recipient.
 
 ## Using PGP with OpConMFT
-PGP encryption is defined using the RoboFTP Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
+PGP encryption is defined using the OpConMFT Agent Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
 **SETTINGS** and then **PGP KEYS** for defining PGP information.
 
  - Using PGP with OpConMFT: A PGP public/private key-pair will be required by either creating a new one or by import.
@@ -153,6 +153,7 @@ When negotiating a connection with a remote SFTP server, SSH2 is required and ci
 - 3.diffie-hellman-group1-sha1
 
 OpConMFT supports SFTP transfers over SSH. The specific security method is dictated by the remote site and OpCOnMFT SSH to be compatible with as many servers as possible. 
+
 When negotiating a secure connection, the necessary encryption details are automatically downloaded from the remote server. In the case of SSH it downloads the host's public key. The first time you connect to any particular secure site you must decide if you trust the server's certificate or key. If you trust the server's credentials, OpConMFT stores a copy of them for future use. On subsequent connection attempts, OpCOnMFT compares the site's current credentials to the trusted copies and automatically connects if the credentials match.
 
 Every type of secure connection supported by OpConMFT will require trusting the remote server but some sites will require more than a simple username and password before they trust you. OpConMFT configuration supports uploads of personal client certificates or public keys. The OpConMFT Configurator supports defining default credentials for use with all secure sites or specific personal credentials for each managed site. In addition to this, it can also be used to generate SSH keys.

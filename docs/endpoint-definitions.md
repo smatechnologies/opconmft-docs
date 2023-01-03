@@ -1,4 +1,5 @@
 # Endpoint Definitions
+
 Endpoints define locations from where the data must be retrieved (source) or deposited (destination). Endpoints can be defined using the Solution Manager client. From the Library, select 
 **SETTINGS** and then **MANAGED SITES** for defining remote servers or **LOCAL ENDPOINTS** for defining UNC paths or directories.
 
@@ -11,9 +12,9 @@ Endpoint Type | Description
 
 ### Defining Path Endpoints
 
-From the menu, select **Local Endpoints**.
+From the menu, select **Path Endpoints**.
 
-![Path Endpoints](../static/img/local-enpoint-definition.png)
+![Path Endpoints](../static/img/path-endpoint-definition.png)
 
 To edit an endpoint, select the endpoint or select **Add Site** to create a new path endpoint.
 
@@ -46,13 +47,13 @@ Field                        | Description
 **Limit Transfer Rate**      | If enabled Specify the approximate maximum transfer rate (in kilobytes per second) for uploads and downloads. Specify ***0*** or ***Unlimited*** to enable data transfer at the fastest speed possible. For example, to limit to roughly ***100** kilobytes per second of bandwidth, enter ***100*** into this field. 
 **Initial Server Directory** | Specify an FTP site directory to set as the default directory (current working directory) upon a successful logon. 
 **Initial Local Directory**  | Specify the local folder to set as the active (current) folder upon a successful log on. 
-**Default Transfer Mode**    | Select the default file transfer mode from the dropdown list (***Binary, Ascii, Ebcdic***). This is the transfer mode used when files are sent or received using the Robo-FTP client applet. When running a script, this is the transfer mode used unless it is overridden with the /type option in the SENDFILE or RCVFILE commands. The default is binary (***Binary***). ***Ebcdic*** mode is enabled only when IBM Host Features has been selected when configuring the site.
+**Default Transfer Mode**    | Select the default file transfer mode from the dropdown list (***Binary, Ascii, Ebcdic***). This is the transfer mode used when files are sent or received using the OpConMFT client applet. When running a script, this is the transfer mode used unless it is overridden with the /type option in the SENDFILE or RCVFILE commands. The default is binary (***Binary***). ***Ebcdic*** mode is enabled only when IBM Host Features has been selected when configuring the site.
 **Connection Port**          | Change the port number used by server at this site. Do not change this value unless specifically directed to do so by an FTP site system administrator. The default value is 21. 
 **Time Out**                 | Specify the default time-out period (in seconds) to wait for a logon to complete, and for interruptions in sending or receiving files to be resolved. This time-out may be used separately, or in conjunction with the FTP retries control, to recover from failed logons. The default value is 60 seconds.
 **Retry Count**              | How many attempts to retry the transfer. 
 **Retry Delay**              | The delay between retry attempts. 
 **SSH Key Auth**             | Enable SSH key or SSL certificate authentication. 
-**Ignore Directory Errors**  | Check this to allow changing into directories whose existance cannot be verified (SFTP and HTTP only).
+**Ignore Directory Errors**  | Check this to allow changing into directories whose existence cannot be verified (SFTP and HTTP only).
 **Proxy Settings**           | If enabled, specify the proxy settings.
 
 Once defined, test connectivity by selecting the **Test** button. When performing a test, if the connection information does not work, the system will ask if it should
