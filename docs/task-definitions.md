@@ -69,8 +69,7 @@ When defining OpConMFT Tasks Source and Destination information must be defined 
 #### Source
 The Source section defines the information for the ***get*** step so a file set can be created. 
 
-The ***get*** step searches the defined ***File Path*** for file names that match the ***File Filter*** definition. Matching files are added to the task's file set. Subsequent task
-steps operate on this file set. If no matching files are found within the defined ***Timeout*** period this step returns an error and the remaining task steps are not processed. 
+The ***get*** step searches the defined ***File Path*** for file names that match the ***File Filter*** definition. Matching files are added to the task's file set. Subsequent task steps operate on this file set. If no matching files are found within the defined ***Timeout*** period this step returns an error and the remaining task steps are not processed. 
 
 ![Source Section](../static/img/opconmft-source-section.png)
 
@@ -78,7 +77,7 @@ Field                      | Description
 -------------------------- | -----------
 **Endpoint**               | Select the required endpoint from the dropdown list (the list includes both local and remote (site) endpoints). This defines which endpoint to use to retrieve the file set. It can be a local or a remote (site) endpoint. A local endpoint is relative to the installed OpConMFT Agent and is either a UNC PATH or a Windows directory. When using a UNC Path, the user associated with the OpConMFT Agent must have the required privileges to access the required file set. 
 **File Filter**            | This defines the files to be included in the file set. It supports wild cards (?) and (*) as well as multiple definitions seperated by the pipe (\|) character (i.e. \*.csv\|\*.xls). When requiring all files in the directory the definition \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension. 
-**File Path**              | It is an optional definition that defines the path to check for files to add to the file set. If present the value is relative to the default definition associated with the endpoint.
+**File Path**              | An optional definition that defines the path to check for files to add to the file set. If present the value is relative to the default definition associated with the endpoint.
 **Timeout**                | An optional field that indicates how many minutes the ***get*** step should wait for the source files if no files are present when the task starts (default value is 1 minute).
 **Retain Source Files**    | This field indicates if the source files associated with the ***get*** step should be removed after the file set is created (values True : False - default False).
 
@@ -118,8 +117,8 @@ The ***compress*** step includes all files associated with the file set into a z
 
 Field                      | Description
 -------------------------- | -----------
-**File Name**              | It is an optional definition that defines the name of the zip file to create. The default zip filename is the name of first file in the file set.
-**Password**               | It is an optional definition that defines a password that can be added to the compressed file.
+**File Name**              | An optional definition that defines the name of the zip file to create. The default zip filename is the name of first file in the file set.
+**Password**               | An optional definition that defines a password that can be added to the compressed file.
 
 ##### Decompress Action
 The ***decompress*** step inflates compressed files from the current file set. Any decompressed files that match the specification setting are added to the task's current file set. The input file that was decompressed is removed from the file set so it is not passed on to the next task step. The decompress step applies the standard File Filters (\*.zip|\*.z|\*.gz|\*.bz2) when looking for files to decompress.  
@@ -128,7 +127,7 @@ The ***decompress*** step inflates compressed files from the current file set. A
 
 Field                      | Description
 -------------------------- | -----------
-**Password**               | It is an optional definition that defines a password that must be used to decompress the file.
+**Password**               | An optional definition that defines a password that must be used to decompress the file.
 **Extract Filter**         | The compressed file could contain multiple files and it is therefore possible to only require specific files within the compressed file. It is possible to extract these specific files by defining a filter (i.e. \*.csv|\*.xls).
 
 #### Encryption
