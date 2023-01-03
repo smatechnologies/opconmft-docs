@@ -12,12 +12,12 @@ OpCon MFT consists of two major components that are integrated with OpCon using 
 
 Component | Description
 ------------------- | -----------
-**OpConMFT Agent**  | is the client functionality providing B2B file transfer functionality. 
-**OpConMFT Server** | is a full FTP server environment for receiving and routing incoming data as well as file sharing capabilities. 
+**OpConMFT Agent**  | The client providing B2B file transfer functionality. 
+**OpConMFT Server** | The full FTP server environment for receiving and routing incoming data as well as file sharing capabilities. 
 
 ![OpConMFT Overview](../static/img/OpConMFT-Overview.png)
 
-The OpCon MFT environment comprises of many components that work together to provide the full Managed File Transfer solution.
+The OpCon MFT environment comprises of many components that work together to provide the full Managed File Transfer (MFT) solution.
 
 ## Solution Manager
 Provides the User interface for the Managed File Transfer environment and provides capabilities for OpCon MFT task definition, defining  
@@ -66,6 +66,3 @@ optionally using compression and or using encryption on the file set and transfe
 
 During the task execution, the OpConMFT Agent persists each completed step. If a step fails and the task is restarted, the task will restart from the 
 failed step.
-
-## OpConMFT Server
-(need information on implementation to complete the documentation)

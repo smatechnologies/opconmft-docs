@@ -8,22 +8,22 @@ to the SMANetcom module provides new functionality that communicates directly wi
 ![Architecture Overview](../static/img/architecture-overview.png)
 
 OpCon provides the following functions:
-- stores the task definition as an OpConMFT Jobtype. 
-- additions to the OpCon Rest-API to support the new OpConMFT Jobtype.
-- extensions to the OpCon Rest-API to route requests to the OpconMFT Agent Rest-API.  
-- the communication between OpCon and the OpConMFT Agent through SMANetcom. 
-- schedules the task.
-- additions to JORS environment to retrieve the job log from the OpConMFT Agent.
+- Stores the task definition as an OpConMFT Jobtype. 
+- Additions to the OpCon Rest-API to support the new OpConMFT Jobtype.
+- Extensions to the OpCon Rest-API to route requests to the OpconMFT Agent Rest-API.  
+- The communication between OpCon and the OpConMFT Agent through SMANetcom. 
+- Schedules the task.
+- Additions to JORS environment to retrieve the job log from the OpConMFT Agent.
 
-Solution Manager provides the following functions:
-- screen definitions for defining OpConMFT Jobtypes.
-- screen definitions for defining endpoints in the OpConMFT Agent.
-- screen definitions for defining encryption information in the OpConMFT Agent.
+The Solution Manager Client provides the following functions:
+- Master Job and Daily Job UI for defining and managing OpConMFT Jobtypes.
+- Endpoints UI for defining and managining endpoints in the OpConMFT Agent.
+- Encryption Key UI for defining encryption information in the OpConMFT Agent.
 
-OpCon MFT Agent provudes the following functions:
-- stores endpoint definitions.
-- stores encryption definitions.
-- executes tasks sumitted by OpCon.
+The OpCon MFT Agent provides the following functions:
+- Stores endpoint definitions.
+- Stores encryption definitions.
+- Execution of tasks submitted by OpCon.
 
 The SMANetcom module has been enhanced to support connections to a remote application using Rest-API calls.
 
@@ -31,23 +31,22 @@ The SMANetcom module has been enhanced to support connections to a remote applic
 A new capability has been added to SMANetcom allowing SMANetcom to directly interact with a Rest-API. The implementation requires a ProxyAgent which provides 
 the mapping between the traditional SMANetcom TX Messages and the Rest-API endpoints of the associated application. 
 
-The capability implements a message queuing capability to pass requests to the ProxyAgents. The ProxyAgents returns data to SMANetcom via callback methods 
+The new capability implements message queuing to pass requests to the ProxyAgents. The ProxyAgents returns data to SMANetcom via callback methods 
 provided on each request.  
 
-The OpCon Agent LsamTypeId provides the indication that this agent type is a Rest-API agent and should be managed by the new capability. A LSAMTYPEID of 90 
+The OpCon Agent LsamTypeId provides the indication that this agent type is a Rest-API agent and will be managed by this new capability. A LSAMTYPEID of 90 
 or greater will be interpreted as a Rest-API agent.
 
-During SMANetcom startup if a Rest-API agent is detected, the specific Rest-API agent information is retrieved from the database (address, port, token, etc). The 
-ProxyAgent for the Rest-API is started passing the address, port and token information. A TX4 message type is then generated passed to the ProxyAgent. During normal 
-operations a TXH message is generated and passed to the ProxyAgent. These messages are used to determine if the application is available and will set the specific 
-OpCon Agent into an **available** or **unavailable** status for task processing.
+During SMANetcom startup if a Rest-API agent is detected, the specific Rest-API agent information is retrieved from the database (address, port, token, etc). The
+ProxyAgent for the Rest-API is started, passing the address, port and token information. A TX4 message type is then generated and passed to the ProxyAgent. During normal 
+operations a TXH message is generated and passed to the ProxyAgent. These messages are used to determine if the appliction is available and will set the specific OpCon Agent into an **available** or **unavailable** status for task processing.
 
 SMANetcom retrieves TX messages (TX1 or TX2) from the MSGS_TO_NETCOM table, checks the LSAMTYPEID of the message and if this is a Rest-API agent places it on the 
 approriate queue for the target ProxyAgent. The ProxyAgent processes the messages and returns the correctly formatted responses which are placed in the MSGS_TO_SAM
 table.
 
 ## OpConMFT AgentProxy
-The OpConMFT AgentProxy provides the link between SMANetcom and the OpConMFT Agent which is a services running on a Windows Server. 
+The OpConMFT AgentProxy provides the link between SMANetcom and the OpConMFT Agent which is a service running on a Windows Server. 
 
 The ProxyAgent uses various libraries to support the communications between SMANetcom and the Rest-API application.
 
@@ -60,7 +59,7 @@ This approach allows the information for specific task executions to be visible 
 is started by the OpConMFT Agent a new jobId will be generated. The OpConMFT Agent maintains a table mapping the OpCon unique jobId (Integer portion) to the OpConMFT 
 jobId.
 
-When restarting a failed OpConMFT task, a new opCon jobId wil be generated, but this will then be redirected to the failed OpConMFT task jobId. The OpConMFT task then
+When restarting a failed OpConMFT task, a new opCon jobId wil be generated, but will be redirected to the failed OpConMFT task jobId. The OpConMFT task then
 restarts from the failed step.
 
 ### TX1 Message
@@ -89,10 +88,10 @@ failed, only the completion code will be returned.
 (need information on implementation to complete the documentation)
 
 ### TX4 Message
-The ProxyAgent receives a TXç message from SMANetcom when SMANetcom starts or the OpConMFT Agent is set to an active state and maps this to a **api/agent/info** GET 
-function. This is used to see if the OpConMFT Agent is available. If a response is received, a positive response is returned to SMANetcom. If an exception occurs a 
+The ProxyAgent receives a TX4 message from SMANetcom when SMANetcom starts or the OpConMFT Agent is set to an active state and maps this to a **api/agent/info** GET 
+function. This is used to see if the OpConMFT Agent is available. If a response is received, a positive response is returned to SMANetcom. If an exception occurs, a 
 negative response is returned to SMANetcom and the OpConMFT Agent is set in a down state (not available). Currently the OpConMFT Agent version is returned which is
-passed to SMANetcom and returned to opCOn where it is saved in the MACHS_AUX table.  
+passed to SMANetcom and returned to OpCon where it is saved in the MACHS_AUX table.  
 
 ### TXH Message
 The ProxyAgent receives a TXH message from SMANetcom on a timed basis and maps this to a **api/agent/info** GET function. This is used to see if the OpConMFT 
@@ -112,8 +111,8 @@ The job log consists of the OpConMFT Agent task status information and the step 
 function to retrieve the step information of the OpConMFT Agent task. 
 
 ## Solution Manager
-When defining an OpConMFT task endpoint and encryption information must be retrieved from the OpConMFT Agent through the OpConMFT Rest-API. Solution Manager itself 
-does not connect directly to the OpCon MFT Rest-API. Instead Solution Manager interacts only with the OpCon Rest-API. The OpCon Rest-API server retrieves the 
+When defining an OpConMFT task, endpoint and encryption information must be retrieved from the OpConMFT Agent through the OpConMFT Rest-API. Solution Manager itself 
+does not connect directly to the OpCon MFT Rest-API. Solution Manager only interacts with the OpCon Rest-API. The OpCon Rest-API server will retrieve the 
 information from the associated OpConMFT Agent.
 
 ## Rest-API Client Library
