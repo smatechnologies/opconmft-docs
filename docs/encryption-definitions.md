@@ -33,7 +33,7 @@ programs like Notepad.
 ## OpConMFT PGP Implementation
 The OpConMFT Agent is a FTP client and not a comprehensive PGP encryption tool, but does provide the basic functionality required to utilize PGP.
 
-The following functionality is provided by the Robo-FTP Configurator:
+The following functionality is provided by the OpConMFT Configurator:
  
 - The creation of private and public key(s).
 - The ability to export public keys to ASCII armored and non-ASCII armored files. ASCII armored key files are plain-text files; non-armored files are in a binary format. Exported public key files are signed by the matching  private key, if it is available.
@@ -44,7 +44,7 @@ The following functionality is provided by the Robo-FTP Configurator:
 PGP has the added advantage of compression. Much like a zip file, files that are encoded using PGP are also compressed. These file(s) are expanded and restored to their original state when they are decrypted by their intended recipient.
 
 ## Using PGP with OpConMFT
-PGP encryption is defined using the RoboFTP Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
+PGP encryption is defined using the OpConMFT Agent Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
 **SETTINGS** and then **PGP KEYS** for defining PGP information.
 
 To use PGP with OpConMFT, you must have your own PGP public/private key-pair. You can either create a new one or you can import one.
@@ -87,9 +87,9 @@ Field                           | Description
 
 When completed select the **OK** to save the new definition.
 
-Related: Robo-FTP's Implementation of PGP, Backing up Robo-FTP's PGP Keys
+Related: OpConMFT's Implementation of PGP, Backing up OpConMFT's PGP Keys
 
-See also: Robo-FTP and PGP Cryptography, Configure PGP Menu
+See also: OpConMFT and PGP Cryptography, Configure PGP Menu
 
 ## TLS Certificates and Signing Requests
 A certificate is a digitally signed document that identifies a person, organization, or server and provides a copy of their public key for encryption. The digital signature may either be 
@@ -136,7 +136,7 @@ Click the ***Create Key*** button.
 Field                     | Description
 --------------------------| -----------
 **Country**               | Required. The value of Country is typically a 2-letter code. Example: US for United States of America. 
-**State/Provive/Region**  | Required. A value indicating the state, provice or region within the country.
+**State/Provive/Region**  | Required. A value indicating the state, province or region within the country.
 **City/Town**             | Required. the name of the city or town within the state, province or region.  
 **Organization**          | Required. Full legal name of an organization or person.
 **Unit**                  | Required. Branch of organization. Examples: IT, marketing, etc.
@@ -155,25 +155,25 @@ Field                     | Description
 --------------------------| -----------
 **Certificate Usage**     | Required. Select what the certificate what be used for (***Authentication, Encryption, Decryption & Signing***). 
 **Certificate File**      | Required. The file name of the supplied key file. If you only have a single file with a .p12 or .pfx extension it may be a PKCS #12 container file. That type of file may hold both a public certificate and its matching private key. To import a PKCS #12 file containing both, enter the file name in the Certificate File field and leave the Private Key File name field empty.
-**Private Key File**      | The file name of the üprivate key file, if provided.  
+**Private Key File**      | The file name of the private key file, if provided.  
 **Password**              | Required. The supplied password used during certificate import.
-**Verification**          | Required. Passowrd verification.
+**Verification**          | Required. Password verification.
 
 When completed select the **OK** to import the certificate.
 
 ## SSH Keys
 Secure File Transfer Protocol (SFTP) is a method of transferring files between a client and server over a secure, encrypted connection (as opposed to regular FTP, which functions over an insecure connection). The security in SFTP comes through its integration with the SSH (or Secure Shell) protocol. SSH provides an encrypted transport layer over which the SFTP commands are executed, and over which files are transferred. Regular FTP connections usually utilize port 21 for connections, while SSH servers use port 22.
 
-Robo-FTP supports both password and private key authentication for SFTP connections.
+OpConMFT supports both password and private key authentication for SFTP connections.
 
-When negotiating a connection with a remote SFTP server, Robo-FTP requires SSH2 and chooses ciphers in the following order: AES (any type) > Triple DES > Blowfish. Robo-FTP selects the key exchange algorithm from the following set in order of preference:
+When negotiating a connection with a remote SFTP server, OpConMFT requires SSH2 and chooses ciphers in the following order: AES (any type) > Triple DES > Blowfish. OpConMFT selects the key exchange algorithm from the following set in order of preference:
 
 - 1.diffie-hellman-group-sha256
 - 2.diffie-hellman-group14-sha1
 - 3.diffie-hellman-group1-sha1
 
 OpConMFT supports SFTP transfers over SSH. The specific security method is dictated by the remote site and OpCOnMFT SSH to be compatible with as many servers as possible. 
-When negotiating a secure connection, Robo-FTP automatically downloads the necessary encryption details from the remote server. In the case of SSH it downloads the host's public key. The first time you connect to any particular secure site you must decide if you trust the server's certificate or key. If you trust the server's credentials, OpConMFT stores a copy of them for future use. On subsequent connection attempts, OpCOnMFT compares the site's current credentials to the trusted copies and automatically connects if the credentials match.
+When negotiating a secure connection, OpCOnMFT automatically downloads the necessary encryption details from the remote server. In the case of SSH it downloads the host's public key. The first time you connect to any particular secure site you must decide if you trust the server's certificate or key. If you trust the server's credentials, OpConMFT stores a copy of them for future use. On subsequent connection attempts, OpCOnMFT compares the site's current credentials to the trusted copies and automatically connects if the credentials match.
 
 Every type of secure connection supported by OpConMFT requires that you trust the remote server but some sites require more than a simple username and password before they trust you. In these situations you can configure OpConMFT to upload your personal client certificate or public key. You can use the OpConMFT Configurator to define default credentials to use with all secure sites or set specific personal credentials for each managed site. The Configurator also contains tools which allow you to generate your own SSH keys.
 
@@ -214,4 +214,4 @@ Field                           | Description
 **Key Size (bits)**             | Select the key size (***1024, 2048, 3072, 4096***).
 
 When completed select the **OK** to import the SSH Key.
-If necessary seletc **Copy Public Key** to extract a copy of the public key.
+If necessary select **Copy Public Key** to extract a copy of the public key.

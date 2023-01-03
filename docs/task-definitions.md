@@ -25,24 +25,30 @@ the regular expression to replace.
 ```
 Examples
 
-To rename the extension of the files in the file set .csv use the following definitions:
+To rename the extension of the files in the file set to .csv use the following definitions:
 
-  Rename Search Pattern   "^(.*)\\\\.[^.]+$"
-  Rename Replace Pattern  "${1}" + ".csv"
+  Rename Files (Select)
+  Search Pattern   ^(.*)\.[^.]+$
+  Replace Pattern  "${1}" + ".csv"
 
-To add a date directory (date format can be defined using tokens) the files in the file set use the following definitions:
+To add a date to a filenames (date format can be defined using tokens) in the file set use the following definitions:
 
-  Rename Search Pattern   "\\directory\\(.*)$" 
-  Rename Replace Pattern  "\\directory\101122\\${1}" or "\\directory\[[$SCHEDULE DATE-DDMMYY]]\\${1}"
+  Rename Files (Select)
+  Search Pattern   ^(.*)\.[^.]+$ 
+  Replace Pattern  "${1}" + "[[$SCHEDULE DATE-YYMMD]].dat"
 
+To add a date to the target directory (date format can be defined using tokens) of the file set use the File Path field of the Destination section :
+
+  File Path       output\[[$SCHEDULE DATE-YYMMD]]
+  
 ```
 
 ## Tasks Overview
-A task within the OpConMFT Agent consists of multiple steps that are executed in a specific order. These invidual steps are persisted and provide 
+A task within the OpConMFT Agent consists of multiple steps that are executed in a specific order. These individual steps are persisted and provide 
 a restart point after a file transfer failure occurs.
 
-An OpCon task has a unique jobId generated everytime an OpCon task is started or restarted. An OpConMFT Agent task also has a unique jobId generated
-everytime an OpConMFT task is started. When a failed OpConMFT task is restarted, the OpConMFT task has a new jobId while the OpConMFT task restarts
+An OpCon task has a unique jobId generated every time an OpCon task is started or restarted. An OpConMFT Agent task also has a unique jobId generated
+every time an OpConMFT task is started. When a failed OpConMFT task is restarted, the OpConMFT task has a new jobId while the OpConMFT task restarts
 using the existing jobId.
 
 Tasks operate on a "file set". A file set can be thought of as a group of files that a task step is currently working on. A particular task step may cause 
@@ -77,7 +83,7 @@ steps operate on this file set. If no matching files are found within the define
 Field                      | Description
 -------------------------- | -----------
 **Endpoint**               | Select the required endpoint from the dropdown list (the list includes both local and remote (site) endpoints). This defines which endpoint to use to retrieve the file set. It can be a local or a remote (site) endpoint. A local endpoint is relative to the installed OpConMFT Agent and is either a UNC PATH or a Windows directory. When using a UNC Path, the user associated with the OpConMFT Agent must have the required privileges to access the required file set. 
-**File Filter**            | This defines the files to be included in the file set. It supports wild cards (?) and (*) as well as multiple definitions seperated by the pipe (\|) character (i.e. \*.csv\|\*.xls). When requiring all files in the directory the definition \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension. 
+**File Filter**            | This defines the files to be included in the file set. It supports wild cards (?) and (*) as well as multiple definitions separated by the pipe (\|) character (i.e. \*.csv\|\*.xls). When requiring all files in the directory the definition \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension. 
 **File Path**              | It is an optional definition that defines the path to check for files to add to the file set. If present the value is relative to the default definition associated with the endpoint.
 **Timeout**                | An optional field that indicates how many minutes the ***get*** step should wait for the source files if no files are present when the task starts (default value is 1 minute).
 **Retain Source Files**    | This field indicates if the source files associated with the ***get*** step should be removed after the file set is created (values True : False - default False).
@@ -94,8 +100,11 @@ Field                      | Description
 **Endpoint**               | Select the required endpoint from the dropdown list (the list includes both local and remote (site) endpoints). This defines the endpoint to use defining where to place the file set. It can be a local or a remote (site) endpoint. A local endpoint is relative to the installed OpConMFT Agent and is either a UNC PATH or a Windows directory. When using a UNC Path, the user associated with the OpConMFT Agent must have the required privileges to access the required file set. 
 **File Path**              | It is an optional definition that defines the path where the files should be placed. If present the value is relative to the default definition associated with the endpoint.
 **Overwrite**              | Select what should happen from the dropdown list if the destination files associated with the ***put*** step exist (values True : Append : False - default True).  
-**Rename Search Pattern**  | This field indicates if the file names should be renamed. It consists of a Regex string indicting what to search for in the file name. This field works with the ***Rename Replace Pattern*** field.
-**Rename Replace Pattern** | This field indicates if the file names should be renamed. It consists of a Regex string indicting what the replacement should be if a match is found.  This field works with the ***Rename Search Pattern*** field.
+**Rename Files**           | Select this field if renaming of files in the target system is required. When selected, the ***Search Pattern***, ***Replace Pattern***, ***Test Filename*** and the ***New Name*** fields will appear.
+**Search Pattern**         | This field indicates if the file names should be renamed. It consists of a Regex string indicting what to search for in the file name. This field works with the ***Replace Pattern*** field.
+**Replace Pattern**        | This field indicates if the file names should be renamed. It consists of a Regex string indicting what the replacement should be if a match is found.  This field works with the ***Search Pattern*** field.
+**Test Filename**          | This field can be used to test the regex expressions entered in the ***Search Pattern*** and ***Replace Pattern*** fields. Enter the original file name and the transformed file name will appear in the ***New Name*** field. This field is not saved as part of the job definition.
+**New Name**               | This field can be used to test the regex expressions entered in the ***Search Pattern*** and ***Replace Pattern*** fields. If a filename is entered into the ***Test FIlename*** field, the renamed file will appear in the ***New Name*** field.
 
 ### Reverse Order of Encryption/Compression
 This function appears when Encryption is selected. It is used to reverse the order of the steps. When creating a send data task, the standard sequence of steps is to first ***compress*** the file set and then ***encrypt*** the file set. There may be occasions when the required step sequence is to first ***encrypt*** the file set and then ***compress*** the file set. The **Reverse Order** field performs this function. Similarly, when creating a retrieve data task, the standard sequence of steps is to first ***decrypt*** the file set and then ***decompress*** the file set. There may be occasions when the required step sequence is to first ***decompress*** the file set and then ***decrypt*** the file set. The **Reverse Order** field performs this function.  
@@ -103,6 +112,10 @@ This function appears when Encryption is selected. It is used to reverse the ord
 Field                      | Description
 -------------------------- | -----------
 **Reverse Order**          | This defines the step sequence order for compression and encryption tasks. (values true : false - default false meaning do not reverse the order).  
+
+![Normal Order](../static/img/reverse-order-normal.png)
+
+![Reverse Order](../static/img/reverse-order-changed.png)
 
 #### Compression
 The optional Compression section defines the information for the ***compress*** or ***decompress*** steps. 
@@ -159,7 +172,7 @@ The ***decrypt*** step decrypts PGP (or GPG) encrypted source files in the curre
 
 Field                      | Description
 -------------------------- | -----------
-**File Filter**            | This defines the files of the file set to be decrypted. It supports wild cards (?) and (*) as well as multiple definitions seperated by the pipe (\|) character (i.e \*.dt1|\*.dt2). When requiring all files in the directory the definition \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension.When requiring all files in the file set \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension. 
+**File Filter**            | This defines the files of the file set to be decrypted. It supports wild cards (?) and (*) as well as multiple definitions separated by the pipe (\|) character (i.e \*.dt1|\*.dt2). When requiring all files in the directory the definition \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension.When requiring all files in the file set \* should be used instead of \*.\* as the second definition will only select files that have a name and and extension. 
 
 ### Failure Criteria
 An OpconMFT task successfully completes with a return code of 0, which is the default setting.

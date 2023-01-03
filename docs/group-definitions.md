@@ -1,6 +1,6 @@
 # Group Definitions
 Tasks within the OpConMFT Agent are associated with a specific group that defines general attributes for execution. The group name is derived
-from the OpCon **Department Name** with special characters removed. The default group defined for the OpconMFT Agent environment is **General**.
+from the OpCon **Department Name** with special characters removed. The default group defined for the OpConMFT Agent environment is **General**.
 When a OpCon Task is submitted to the OpConMFT Agent and the group associated with the request does not exist, the group will be created.
 
 ```
@@ -38,7 +38,7 @@ Macro                 | Description
 --------------------- | -----------
 **%year**               | The 2 digit year (i.e. 12 for 2012) 
 **%month**              | The 2 digit month (i.e. 02 for February) 
-**%month_abbreviation** | The 3 character month abbreviation (i.e. Feb for Ferbruary)
+**%month_abbreviation** | The 3 character month abbreviation (i.e. Feb for February)
 **%day**                | The 2 digit day of the month
 **%weekday**            | The 2 digit day of the week: ie Sunday is 0 and Saturday is 6 
 **%day_abbreviation**   | The 3 character day of the week (i.e. Sunday is Sun)

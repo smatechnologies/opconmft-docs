@@ -280,7 +280,7 @@ includes support for the following features:
 
 OpConMFT can generate its own PGP keys, so no additional software is needed when working with PGP encryption. When generating a new PGP key with OpConMFT you can choose between the 
 RSA or the DSA (aka DSADH, aka DSS) algorithms, at either 1024-, 2048-, or 4096-bit lengths. By default, files encrypted OpConMFT use the AES(-128) cipher (or IDEA in PGP 2.6 
-compatibility mode), ZIP compression, and SHA-1 hash (or MD5 in compatibility mode). Only the IDEA cipher is supported in PGP 2.6 compatiblity mode.
+compatibility mode), ZIP compression, and SHA-1 hash (or MD5 in compatibility mode). Only the IDEA cipher is supported in PGP 2.6 compatibility mode.
 
 ### ZIP Encryption
 OpConMFT supports password-protected encrypted ZIP files through use of the ZIP and UNZIP commands. Two encryption ciphers are supported with ZIP: the original PKZIP encryption scheme 
