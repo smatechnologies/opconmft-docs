@@ -28,7 +28,7 @@ When completed select the **OK** to save the new definition or changes.
 ### Defining Site Endpoints
 From the menu, select **Managed Sites**.
 
-![Managed Sites](../static/img/managed-site.png)
+![Managed Sites](../static/img/managed-sites.png)
 
 To edit an existing definition, select the definition or select **Add Site** to create a new site.
 
