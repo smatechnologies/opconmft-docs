@@ -31,7 +31,7 @@ From the menu, select **Managed Sites**.
 
 To edit an existing definition, select the definition or select **Add Site** to create a new site.
 
-![Managed Site Definition](../static/img/add-managed-site.png)
+![Managed Site Definition](../static/img/add-managed-sites.png)
 
 Field                        | Description
 ---------------------------- | -----------
