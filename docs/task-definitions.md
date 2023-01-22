@@ -70,8 +70,7 @@ When defining OpConMFT Tasks Source and Destination information must be defined 
 #### Source
 The Source section defines the information for the ***get*** step so a file set can be created. 
 
-The ***get*** step searches the defined ***File Path*** for file names that match the ***File Filter*** definition. Matching files are added to the task's file set. Subsequent task
-steps operate on this file set. If no matching files are found within the defined ***Timeout*** period this step returns an error and the remaining task steps are not processed. 
+The ***get*** step searches the defined ***File Path*** for file names that match the ***File Filter*** definition. Matching files are added to the task's file set. Subsequent task steps operate on this file set. If no matching files are found within the defined ***Timeout*** period this step returns an error and the remaining task steps are not processed. 
 
 ![Source Section](../static/img/opconmft-source-section.png)
 
@@ -126,8 +125,8 @@ The ***compress*** step includes all files associated with the file set into a z
 
 Field                      | Description
 -------------------------- | -----------
-**File Name**              | It is an optional definition that defines the name of the zip file to create. The default zip filename is the name of first file in the file set.
-**Password**               | It is an optional definition that defines a password that can be added to the compressed file.
+**File Name**              | An optional definition that defines the name of the zip file to create. The default zip filename is the name of first file in the file set.
+**Password**               | An optional definition that defines a password that can be added to the compressed file.
 
 ##### Decompress Action
 The ***decompress*** step inflates compressed files from the current file set. Any decompressed files that match the specification setting are added to the task's current file set. The input file that was decompressed is removed from the file set so it is not passed on to the next task step. The decompress step applies the standard File Filters (\*.zip|\*.z|\*.gz|\*.bz2) when looking for files to decompress.  
@@ -136,7 +135,7 @@ The ***decompress*** step inflates compressed files from the current file set. A
 
 Field                      | Description
 -------------------------- | -----------
-**Password**               | It is an optional definition that defines a password that must be used to decompress the file.
+**Password**               | An optional definition that defines a password that must be used to decompress the file.
 **Extract Filter**         | The compressed file could contain multiple files and it is therefore possible to only require specific files within the compressed file. It is possible to extract these specific files by defining a filter (i.e. \*.csv|\*.xls).
 
 #### Encryption
