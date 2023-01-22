@@ -44,8 +44,14 @@ The following functionality is provided by the OpConMFT Configurator:
 PGP has the added advantage of compression. Much like a zip file, files that are encoded using PGP are also compressed. These file(s) are expanded and restored to their original state when they are decrypted by their intended recipient.
 
 ## Using PGP with OpConMFT
-PGP encryption is defined using the OpConMFT Agent Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
-**SETTINGS** and then **PGP KEYS** for defining PGP information.
+
+PGP encryption is currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select **PGP Key Management**. 
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to PGP Key Management associated with the OpConMFT Agent. 
 
 To use PGP with OpConMFT, you must have your own PGP public/private key-pair. You can either create a new one or you can import one.
 
@@ -124,8 +130,13 @@ for the duration of the TLS session and is discarded when the session ends.
 In some enterprise situations where security is a special concern, the remote server may require OpConMFT to provide a client certificate to prove your identity before agreeing to the TLS connection. This is known as a bilateral connection or "mutual authentication."  
 
 ### Using TLS with OpConMFT
-Certificates are defined using the OpConMFT Web Server. Once this information is defined, it can be used by tasks for encryption and decryption. From the initial page, select 
-**SETTINGS** and then **TLS CERTIFICATE** for defining PGP information.
+TLS certificates are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select **TLS Certificate Management**.
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to TLS Certificate Management associated with the OpConMFT Agent. 
 
 ![Certificates](../static/img/add-certificates.png)
 
@@ -177,7 +188,13 @@ When negotiating a secure connection, OpCOnMFT automatically downloads the neces
 
 Every type of secure connection supported by OpConMFT requires that you trust the remote server but some sites require more than a simple username and password before they trust you. In these situations you can configure OpConMFT to upload your personal client certificate or public key. You can use the OpConMFT Configurator to define default credentials to use with all secure sites or set specific personal credentials for each managed site. The Configurator also contains tools which allow you to generate your own SSH keys.
 
-From the initial page, select **SETTINGS** and then **SSH KEYS** for defining SSH Key information. 
+SSH keys are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select **SSH Key Management**.
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to SSH Key Management associated with the OpConMFT Agent. 
 
 ![SSH Keys](../static/img/encryption-ssh-keys.png)
 

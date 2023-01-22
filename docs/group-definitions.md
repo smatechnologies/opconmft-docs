@@ -1,4 +1,14 @@
 # Group Definitions
+Group definitions are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To define Groups, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select **Settings**.
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpConMFT Agent. 
+
+From the initial page, select **SETTINGS** and then **GROUPS** for defining group information.
+
 Tasks within the OpConMFT Agent are associated with a specific group that defines general attributes for execution. The group name is derived
 from the OpCon **Department Name** with special characters removed. The default group defined for the OpConMFT Agent environment is **General**.
 When a OpCon Task is submitted to the OpConMFT Agent and the group associated with the request does not exist, the group will be created.
@@ -14,8 +24,6 @@ OpConMFT Group name     : TestGroup
 
 ```
 Group definition consists of defining the retention of data for the group and a default email associated with the group (recipients, subject and address).
-
-From the initial page, select **SETTINGS** and then **GROUPS** for defining group information.
 
 ![Group Definition](../static/img/group-definitions.png)
 
