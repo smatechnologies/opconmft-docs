@@ -26,9 +26,9 @@ OpConMFT supports the following versions of SSL/TLS when connecting with the FTP
 
 **Perfect Forward Secrecy**
 
-Without Perfect Forward Secrecy (PFS), if an adversary manages to compromise a server's private key, he will be able to decrypt any secure communications that were 
+Without Perfect Forward Secrecy (PFS), if an adversary manages to compromise a server's private key, they will be able to decrypt any secure communications which were 
 previously monitored and recorded by that adversary at any time in the past. Perfect Forward Secrecy is a property of certain modern ciphers which fully eliminates 
-this risk through the use of additional, temporary keys that cannot be obtained by any eavesdropper. 
+this risk through the use of additional temporary keys that cannot be obtained by any eavesdropper. 
 
 **OpConMFT supports Perfect Forward Secrecy by providing a large collection of PFS-enabled ciphers, including**
 
@@ -220,7 +220,7 @@ SFTP stands for "SSH File Transfer Protocol." Like its name suggests, it is a fi
 - aes192-ctr
 - aes256-ctr
 - aes256-cbc
-- rijndael-cbc@lysator.liu.se
+- rijndael-cbc<span>@</span>lysator.liu.se
 - aes192-cbc
 - aes128-cbc
 - blowfish-cbc
@@ -278,7 +278,7 @@ sensitive information when it is stored locally or transmitted across the Intern
 OpConMFT can generate its own PGP keys, so no additional software is needed when working with PGP encryption. When generating a new PGP key with OpConMFT you can choose between the RSA or the DSA (aka DSADH, aka DSS) algorithms, at either 1024-, 2048-, or 4096-bit lengths. By default, files encrypted OpConMFT use the AES(-128) cipher (or IDEA in PGP 2.6 compatibility mode), ZIP compression, and SHA-1 hash (or MD5 in compatibility mode). Only the IDEA cipher is supported in PGP 2.6 compatiblity mode.
 
 ### ZIP Encryption
-OpConMFT supports password-protected encrypted ZIP files through use of the ZIP and UNZIP commands. Two encryption ciphers are supported with ZIP: the original PKZIP encryption scheme and AES-256. The original PKZIP encryption scheme is now known to be insecure, but it has an advantage that most ZIP programs are able to decrypt files using this cipher, if provided with the correct password. AES-256, in contrast, is an extremely secure, military-grade cipher, and though not all ZIP programs are able to understand AES-256-encrypted ZIP files, most commercial programs do support this cipher, including current versions of WinZip (since 2004), and WinRAR (since 2013).  When more than a casual layer of security is necessary, a ZIP file should either be encrypted with AES-256 or else protected by an additional layer of encryption such as PGP (for data-at-rest) or TLS (for data-in-transit).            
+OpConMFT supports password-protected encrypted ZIP files through use of the ZIP and UNZIP commands. Two encryption ciphers are supported with ZIP: the original PKZIP encryption scheme and AES-256. The original PKZIP encryption scheme is now known to be insecure, but it has an advantage that most ZIP programs are able to decrypt files using this cipher, if provided with the correct password. AES-256, in contrast, is an extremely secure military-grade cipher, and though not all ZIP programs are able to understand AES-256-encrypted ZIP files, most commercial programs do support this cipher, including current versions of WinZip (since 2004) and WinRAR (since 2013). When more than a casual layer of security is necessary, a ZIP file should either be encrypted with AES-256 or else protected by an additional layer of encryption such as PGP (for data-at-rest) or TLS (for data-in-transit).
 
 ### CMS Encryption
 OpConMFT supports encrypted CMS (Cryptographic Message Syntax) files through use of the CMSENCRYPT  and CMSDECRYPT commands. Both commands support handling signed, encrypted, and signed+encrypted CMS envelopes. Symmetric passphrase support is also available. 
