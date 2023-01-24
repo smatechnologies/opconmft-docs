@@ -55,7 +55,7 @@ Macro                 | Description
 **%step**               | The last filename processed by step 
 **%step[#]**            | The period separated token from the filename (starts with 0) IE: fileid.dat.Z.pgp, %step[0] = fileid, %step[2] = Z…
 **%job_details**        | The step result strings for every step processed so far 
-**%job_name**           | The current jobs name 
+**%job_name**           | The current job's name 
 **%step_name**          | The name of the currently executing step 
 **%crlf**               | A string containing the carriage return and line feed characters
  

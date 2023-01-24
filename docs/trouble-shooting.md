@@ -176,6 +176,7 @@ Target File C:\TestData\output\RMA.zip.pgp
 ```
 
 ## Retrieving Job Information from OpConMFT Agent
+
 It is possible to retrieve the job information using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent 
 is installed (not an OpCon user).
 
@@ -188,6 +189,7 @@ Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and
 From the initial page, select **JOBS** and then the job group associated with the job (i.e. **GENERAL**). A list of jobs will be displayed. 
 Select the job (remember the jobname consists of the group name and the OpCon jobname minus any special characters, i.e. department JMFT002-04 becomes JMFT00204). 
 Once selected the job information can be downloaded.
+
 
 ![Agent Job Information](../static/img/agent-job-information-1.png)
 
@@ -276,7 +278,7 @@ error1164_continue_on_error=False
 There are various entries in the database tables that are not visible or contain special values that can influence job execution.
 
 ### MACH Table
-The port number used by the OpConMFT Agent is greater than 50000. This represents a problem as the maximum value allowed in the filed is 32000.
+The port number used by the OpConMFT Agent is greater than 50000. This represents a problem as the maximum value allowed in the field is 32000.
 The port number is therefore saved as a negative number and converted to the correct value before use by the OpCon software (i.e. a port number
 of 50405 is stored as -15131).
 
@@ -285,9 +287,11 @@ The new OpConMFT Agent is defined in the LSAMTYPES table as **LSAMTYPEID** 25 an
 
 ### LSAMTYPES_AUX Table
 
-For the OpConMFT Agent to support the JORS capability, the following two entries must be present.
-**LSAMTYPEID** 25 and **LAFC** 62 and **LASEQNO** 1 and **LAVALUE** True.
-**LSAMTYPEID** 25 and **LAFC** 120 and **LASEQNO** 1 and **LAVALUE** True.
+For the OpConMFT Agent to support the JORS capability, the following two entries must be present:
+**LSAMTYPEID** | **LAFC** | **LASEQNO** | **LAVALUE**
+-------------- | -------- | ----------- | -----------
+25             | 62       | 1           | True
+25             | 120      | 1           | True
 
 ### JMASTER_AUX Table
 
@@ -303,6 +307,6 @@ It should be noted that the definitions for field codes 25018 and 25019 are html
 table, but visible in the user interface. These fields are decoded during the job execution phase.
 
 During job execution, the JORS indicator value is stored in field code 62 of the stored job definition.
-During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If t he job completes successfully, this code
+During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If the job completes successfully, this code
 is set to 0, otherwise it will contain the OpCon Agent jobid. This value is used to restart a failed OpCon Agent task.
 
