@@ -176,9 +176,20 @@ Target File C:\TestData\output\RMA.zip.pgp
 ```
 
 ## Retrieving Job Information from OpConMFT Agent
-It is possible to retrieve the job information using the OpConMFT Agent Web Server. From the initial page, select **JOBS** and then the job group associated with the job (i.e. **GENERAL**). A list
-of jobs will be displayed. Select the job (remember the jobname consists of the group name and the OpCon jobname minus any special characters, i.e. department JMFT002-04 becomes JMFT00204). Once 
-selected the job information can be downloaded.
+
+It is possible to retrieve the job information using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent 
+is installed (not an OpCon user).
+
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To view job information, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select **Agent Jobs**.
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpConMFT Agent. 
+
+From the initial page, select **JOBS** and then the job group associated with the job (i.e. **GENERAL**). A list of jobs will be displayed. 
+Select the job (remember the jobname consists of the group name and the OpCon jobname minus any special characters, i.e. department JMFT002-04 becomes JMFT00204). 
+Once selected the job information can be downloaded.
+
 
 ![Agent Job Information](../static/img/agent-job-information-1.png)
 
@@ -240,9 +251,9 @@ continue_on_error=False
 error1164_report_on_error=True
 error1164_skip_email_on_error=True
 error1164_continue_on_error=False
-key=SAT-312
+key=SAT-312 (Test Key) <bvanhinsbergen@smatechnologies.com>
 cipher=AES
-signing_key=SAT-312
+signing_key=SAT-312 (Test Key) <bvanhinsbergen@smatechnologies.com>
 
 [putStepDetails]
 ;
@@ -287,7 +298,13 @@ For the OpConMFT Agent to support the JORS capability, the following two entries
 During job definition, the **Department** name is saved as the job group name (any special characters are removed). The value is stored in the
 field code 25002.
 
+It should be noted that the definitions for field codes 25018 and 25019 are html encoded and spaces and @ signs will not be visible in the database
+table, but visible in the user interface. These fields are decoded during the job execution phase.
+
 ### SMASTER_AUX Table
+
+It should be noted that the definitions for field codes 25018 and 25019 are html encoded and spaces and @ signs will not be visible in the database
+table, but visible in the user interface. These fields are decoded during the job execution phase.
 
 During job execution, the JORS indicator value is stored in field code 62 of the stored job definition.
 During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If the job completes successfully, this code

@@ -1,7 +1,11 @@
 # Endpoint Definitions
+Endpoints are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
 
-Endpoints define locations from where the data must be retrieved (source) or deposited (destination). Endpoints can be defined using the Solution Manager client. From the Library, select 
-**SETTINGS** and then **MANAGED SITES** for defining remote servers or **LOCAL ENDPOINTS** for defining UNC paths or directories.
+![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+
+To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
+Select the **OpConMFT Agent Settings** TAB and then select either **Path Endpoints** for defining UNC paths or directories or **Manage Sites** for defining remote servers.
+Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpConMFT Agent. 
 
 There are two types of endpoints:
 

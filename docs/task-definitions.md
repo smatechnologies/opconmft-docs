@@ -7,6 +7,7 @@ An OpConMFT jobname consists of a **group** name and a **job** name (***group-na
 of the **Department Name** associated with the OpCon job (default **General**) and the OpCon jobname. All special characters and spaces are removed from these
 values. 
 
+
 ```
 Example
 
@@ -25,37 +26,34 @@ the regular expression to replace.
 ```
 Examples
 
-To rename the extension of the files in the file set to .csv use the following definitions:
-
-  Rename Files (Select)
-  Search Pattern   ^(.*)\.[^.]+$
-  Replace Pattern  "${1}" + ".csv"
+To rename the extension of the files in the file set .csv use the following definitions:
 
 To append a date to all filenames (date format can be defined using tokens) in the file set use the following definitions:
 
-  Rename Files (Select)
-  Search Pattern   ^(.*)\.[^.]+$ 
-  Replace Pattern  "${1}" + "[[$SCHEDULE DATE-YYMMD]].dat"
+  Rename Search Pattern   ^(.*)\.[^.]+$
+  Rename Replace Pattern  "${1}" + ".csv"
+
+To add a date directory (date format can be defined using tokens) the files in the file set use the following definitions:
 
 To add a date to the target directory (date format can be defined using tokens) of the file set use the File Path field of the Destination section:
 
-  File Path       output\[[$SCHEDULE DATE-YYMMD]]
-  
+  Rename Search Pattern   "\\directory\\(.*)$" 
+  Rename Replace Pattern  "\\directory\101122\\${1}" or "\\directory\[[$SCHEDULE DATE-DDMMYY]]\\${1}"
+
 ```
 
 ## Tasks Overview
-A task within the OpConMFT Agent consists of multiple steps that are executed in a specific order. These individual steps are persisted and provide 
+A task within the OpConMFT Agent consists of multiple steps that are executed in a specific order. These invidual steps are persisted and provide 
 a restart point after a file transfer failure occurs.
 
-An OpCon task has a unique jobId generated every time an OpCon task is started or restarted. An OpConMFT Agent task also has a unique jobId generated
-every time an OpConMFT task is started. When a failed OpConMFT task is restarted, the OpConMFT task has a new jobId while the OpConMFT task restarts
+An OpCon task has a unique jobId generated everytime an OpCon task is started or restarted. An OpConMFT Agent task also has a unique jobId generated
+everytime an OpConMFT task is started. When a failed OpConMFT task is restarted, the OpConMFT task has a new jobId while the OpConMFT task restarts
 using the existing jobId.
 
 Tasks operate on a "file set". A file set can be thought of as a group of files that a task step is currently working on. A particular task step may cause 
 files to be added to the current file set, removed from the file set, or a combination of the two. In order to implement this aspect correctly, the files 
 belonging to the file set are stored locally on disk, in the Data\ directory for the corresponding job. This allows the Retry Run feature to work correctly 
 without inadvertently duplicating steps for a given file.
-
 
 **Supported Job Steps**.
 

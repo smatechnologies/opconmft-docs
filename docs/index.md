@@ -1,11 +1,11 @@
 ---
 slug: '/'
-sidebar_label: 'OpCon MFT'
+sidebar_label: 'OpConMFT'
 ---
 
 # OpCon MFT
 
-OpCon MFT is a Managed File Transfer product integrated within the OpCon environment providing a comprehensive file transfer capability across
+OpCon FT is a Managed File Transfer product integrated within the OpCon environment providing a comprehensive file transfer capability across
 the Enterprise.
 
 OpCon MFT consists of two major components that are integrated with OpCon using the Rest-API capabilities supported by the components.
