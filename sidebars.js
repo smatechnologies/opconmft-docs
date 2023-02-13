@@ -7,5 +7,6 @@ module.exports = {
     'group-definitions',
     'task-definitions',
     'security',
+    'trouble-shooting',
   ],
 };

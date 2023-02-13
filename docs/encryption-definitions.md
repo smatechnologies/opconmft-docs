@@ -52,12 +52,11 @@ To define PGP keys, edit the associated OpCon MFT agent details using Solution M
 Select the **OpCon MFT Agent Settings** TAB and then select **PGP Key Management**. 
 Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to PGP Key Management associated with the OpCon MFT Agent. 
 
- - Using PGP with OpCon MFT: A PGP public/private key-pair will be required by either creating a new one or by import.
- - Encrypting a file with OpCon MFT: The recipient's public key must be imported prior to encryption.
- - Decrypting a file with OpCon MFT: Export your public key and send it to the recipient who will be encrypting the file so it can be applied during the encryption process.
-
+ - Using PGP with OpConMFT: A PGP public/private key-pair will be required and can be provided, either by creating a new pair or by importing an existing pair.
+ - Encrypting a file with OpConMFT: The recipient's public key must be imported prior to encryption.
+ - Decrypting a file with OpConMFT: Export your public key and send it to the recipient who will be encrypting the file so it can be applied during the encryption process.
+ 
 ![PGP Key Menu](../static/img/pgp-key-main-menu.png)
-
 
 ### Creating a New Key-Pair
 
@@ -67,12 +66,12 @@ Click the ***Create Key*** button.
 
 Field                           | Description
 ------------------------------- | -----------
-**Key User Name**               | (Required) Is the name that will be assigned to this key-pair consisting of alphanumeric characters. 
+**Key User Name**               | (Required) The name that will be assigned to this key-pair consisting of alphanumeric characters. 
 **Key Comment**                 | Comment associated with the definition.
 **Key E-Mail Address**          | Email address associated with the definition.  
-**Key Algorithm**               | Select the algorithm (***RSA, DSA(DH/DSS)***).
-**Key Size**                    | Select the size (***4096, 2048, 1024***).
-**Key Expires**                 | Select the key expiration (***Never or enter an expiration date***).
+**Key Algorithm**               | Select the encryption algorithm (***RSA, DSA(DH/DSS)***).
+**Key Size**                    | Select the encryption key size (***4096, 2048, 1024***).
+**Key Expires**                 | Select the key expiration date (***Never or enter an expiration date***).
 **Key PassPhrase**              | Define a Passphrase.
 **Key PassPhrase Verification** | Re-enter the Passphrase for verification.
 **Save PassPhrase**             | Select ***Save Passphrase*** to store it in the encrypted password store for use for automatic use with OpCon MFT PGP commands.

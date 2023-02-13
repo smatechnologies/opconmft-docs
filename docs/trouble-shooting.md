@@ -1,6 +1,6 @@
 # Trouble Shooting
-The OpCon MFT Implementation uses the SMANetcom ProxyAgent Framework for communication between OpCon and the OpCon MFT Agent. There is
-no 'OpCon' Agent to provide the communications connection, instead SMANetcom communicates directly with the external OpCon MFT Agent. 
+The OpCon MFT Implementation uses the SMANetCom ProxyAgent Framework for communication between OpCon and the OpCon MFT Agent. There is
+no 'OpCon' Agent to provide the communications connection, instead SMANetCom communicates directly with the external OpCon MFT Agent. 
 Communication consists of Rest-API calls between the ProxyAgent Framework and the OpCon MFT Agent. This means that the OpCon MFT Agent 
 Service becomes the OpCon Agent. 
 
@@ -17,7 +17,7 @@ support Rest-API requests to the OpCon MFT Agent. It also includes the routines 
 definitions which are passed to the OpCon MFT Agent.
 
 ## SMANetcom AgentProxy Framework
-The AgentProxy framework is part of SMANetcom and is responsible for passing requests to the Associated AgentProxy. 
+The AgentProxy framework is part of SMANetCom and is responsible for passing requests to the Associated AgentProxy. 
 
 SMANetcom retrieves the TX1 and TX2 messages from the MSGS_TO_SAM table and checks to see if these messages are for AgentProxies. If
 the messages are for AgentProxies, the AgentProxy framework delivers the messages to the associated AgentProxy. Returned messages are
@@ -64,7 +64,7 @@ Example
 ```
 
 ## SMAMftAgentProxy
-This module is part of the new SMANetcom Adapter framework and receives TX messages from SMANetcom. These TX messages are transformed into
+This module is part of the new SMANetCom Adapter framework and receives TX messages from SMANetCom. These TX messages are transformed into
 requests that the target OpCon MFT Agent understands.
 
 - **%%TX1**        Converted to a **/api/job/start/{groupName}.{correctedJobName}/withtag/{tagName}** job start request.
@@ -206,8 +206,9 @@ Target File C:\TestData\output\RMA.zip.pgp
 -----------------------------------
 ```
 
-## Retrieving Job Information from OpCon MFT Agent
-It is possible to retrieve the job information using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent 
+## Retrieving Job Information from OpConMFT Agent
+
+It is possible to retrieve the job information using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent 
 is installed (not an OpCon user).
 
 ![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
@@ -217,8 +218,9 @@ Select the **OpCon MFT Agent Settings** TAB and then select **Agent Jobs**.
 Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpCon MFT Agent. 
 
 From the initial page, select **JOBS** and then the job group associated with the job (i.e. **GENERAL**). A list of jobs will be displayed. 
-Select the job (remember the jobname consists of the group name and the OpCon jobname minus any special characters, i.e. department JMFT002-04 becomes JMFT00204). 
+Select the job (remember the job name consists of the group name and the OpCon job name minus any special characters, i.e. department JMFT002-04 becomes JMFT00204). 
 Once selected the job information can be downloaded.
+
 
 ![Agent Job Information](../static/img/agent-job-information-1.png)
 
@@ -316,9 +318,11 @@ The new OpCon MFT Agent is defined in the LSAMTYPES table as **LSAMTYPEID** 25 a
 
 ### LSAMTYPES_AUX Table
 
-For the OpCon MFT Agent to support the JORS capability, the following two entries must be present.
-**LSAMTYPEID** 25 and **LAFC** 62 and **LASEQNO** 1 and **LAVALUE** True.
-**LSAMTYPEID** 25 and **LAFC** 120 and **LASEQNO** 1 and **LAVALUE** True.
+For the OpConMFT Agent to support the JORS capability, the following two entries must be present:
+**LSAMTYPEID** | **LAFC** | **LASEQNO** | **LAVALUE**
+-------------- | -------- | ----------- | -----------
+25             | 62       | 1           | True
+25             | 120      | 1           | True
 
 ### JMASTER_AUX Table
 
@@ -334,6 +338,6 @@ It should be noted that the definitions for field codes 25018 and 25019 are html
 table, but visible in the user interface. These fields are decoded during the job execution phase.
 
 During job execution, the JORS indicator value is stored in field code 62 of the stored job definition.
-During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If t he job completes successfully, this code
+During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If the job completes successfully, this code
 is set to 0, otherwise it will contain the OpCon Agent jobid. This value is used to restart a failed OpCon Agent task.
 
