@@ -1,26 +1,26 @@
 # Group Definitions
-Group definitions are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+Group definitions are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
-![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
 
-To define Groups, edit the associated OpConMFT agent details using Solution Manager.
-Select the **OpConMFT Agent Settings** TAB and then select **Settings**.
-Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpConMFT Agent. 
+To define Groups, edit the associated OpCon MFT agent details using Solution Manager.
+Select the **OpCon MFT Agent Settings** TAB and then select **Settings**.
+Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to Endpoints associated with the OpCon MFT Agent. 
 
 From the initial page, select **SETTINGS** and then **GROUPS** for defining group information.
 
-Tasks within the OpConMFT Agent are associated with a specific group that defines general attributes for execution. The group name is derived
-from the OpCon **Department Name** with special characters removed. The default group defined for the OpConMFT Agent environment is **General**.
-When a OpCon Task is submitted to the OpConMFT Agent and the group associated with the request does not exist, the group will be created.
+Tasks within the OpCon MFT Agent are associated with a specific group that defines general attributes for execution. The group name is derived
+from the OpCon **Department Name** with special characters removed. The default group defined for the OpCon MFT Agent environment is **General**.
+When a OpCon Task is submitted to the OpCon MFT Agent and the group associated with the request does not exist, the group will be created.
 
 ```
 Example
 
 OpCon Department Name   : <General>
-OpConMFT Group name     : General
+OpCon MFT Group name     : General
 
 OpCon Department Name   : Test Group
-OpConMFT Group name     : TestGroup
+OpCon MFT Group name     : TestGroup
 
 ```
 Group definition consists of defining the retention of data for the group and a default email associated with the group (recipients, subject and address).
