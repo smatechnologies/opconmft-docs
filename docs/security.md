@@ -3,8 +3,7 @@ OpCon MFT supports both connection-level security and file-level security.
 
 When connecting to a secure site via SFTP, FTPS, or HTTPS the transmitted data is encrypted on one end and automatically decrypted on the other end.
 
-OpCon MFT also supports using PGP to encrypt and decrypt individual files. PGP encrypted files may be transferred via either normal or secure connections. Most servers 
-are not able to automatically decrypt PGP encrypted files. If you need this functionality consider using OpCon MFT Server software on the remote site.
+OpCon MFT also supports using PGP to encrypt and decrypt individual files. PGP encrypted files may be transferred via either normal or secure connections. Most servers are not able to automatically decrypt PGP encrypted files. If you need this functionality consider using OpCon MFT Server software on the remote site.
 
 ## Supported Encryption Technologies
 OpCon MFT includes support for a number of different encryption technologies:
@@ -26,9 +25,7 @@ OpCon MFT supports the following versions of SSL/TLS when connecting with the FT
 
 **Perfect Forward Secrecy**
 
-Without Perfect Forward Secrecy (PFS), if an adversary manages to compromise a server's private key, they will be able to decrypt any secure communications which were 
-previously monitored and recorded by that adversary at any time in the past. Perfect Forward Secrecy is a property of certain modern ciphers which fully eliminates 
-this risk through the use of additional temporary keys that cannot be obtained by any eavesdropper. 
+Without Perfect Forward Secrecy (PFS), if an adversary manages to compromise a server's private key, they will be able to decrypt any secure communications which were previously monitored and recorded by that adversary at any time in the past. Perfect Forward Secrecy is a property of certain modern ciphers which fully eliminates this risk through the use of additional temporary keys that cannot be obtained by any eavesdropper. 
 
 **OpCon MFT supports Perfect Forward Secrecy by providing a large collection of PFS-enabled ciphers, including**
 
@@ -62,8 +59,7 @@ The complete list of HMAC algorithms is as follows:
 
 **Supported Ciphers**
 
-OpCon MFT includes support for all 106 separate ciphers provided by OpenSSL 1.1.1e for use with TLS. Each of these ciphers can be paired with a limited number of 
-HMAC algorithms, making for a total of 130 cipher + HMAC combinations. The complete cipher list is as follows:
+OpCon MFT includes support for all 106 separate ciphers provided by OpenSSL 1.1.1e for use with TLS. Each of these ciphers can be paired with a limited number of HMAC algorithms, making for a total of 130 cipher + HMAC combinations. The complete cipher list is as follows:
 
 - ECDHE-RSA-AES256-GCM-SHA384
 - ECDHE-ECDSA-AES256-GCM-SHA384
@@ -240,8 +236,7 @@ SFTP stands for "SSH File Transfer Protocol." Like its name suggests, it is a fi
 - RIPEMD-160 
 
 ### PGP Encryption 
-OpCon MFT supports encryption and decryption of files using PGP (Pretty Good Privacy) through the PGPENCRYPT and PGPDECRYPT commands. PGP cryptography enables you to protect 
-sensitive information when it is stored locally or transmitted across the Internet, so that it cannot be read by anyone except the intended recipient. OpCon MFT's PGP implementation includes support for the following features:
+OpCon MFT supports encryption and decryption of files using PGP (Pretty Good Privacy) through the PGPENCRYPT and PGPDECRYPT commands. PGP cryptography enables you to protect sensitive information when it is stored locally or transmitted across the Internet, so that it cannot be read by anyone except the intended recipient. OpCon MFT's PGP implementation includes support for the following features:
 
 **Supported Symmetric Ciphers**
 

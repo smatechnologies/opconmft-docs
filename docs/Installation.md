@@ -22,17 +22,13 @@ Select the **Scheduler** option from the tree view and then the **Scheduler Sett
 The connection between OpCon and the OpCon MFT Agent requires a https connection instead of the default http connection. 
 On the **Scheduler Settings** screen, ensure that the **Use SSL/TLS** option is selected. 
 After this is selected, a certificate must be provided for the connection. If there is no a valid certificate to import, then either create the information
-to purchase a certificate or create a self-signed certificate (see **Using TLS with OpCon MFT** section of **encryption-definitions**). Once the certificate 
-has created or imported, set the certificate as the default for the OpCon MFT Agent.  
+to purchase a certificate or create a self-signed certificate (see **Using TLS with OpCon MFT** section of **encryption-definitions**). Once the certificate has created or imported, set the certificate as the default for the OpCon MFT Agent.  
 
 Once these changes have been made, restart the OpConMFT Service.
 
 ![OpCon MFT Agent Scheduler Settings Tab](../static/img/opcon-mft-agent-configurator-scheduler-settings.png)
 
-After the OpCon MFT agent is installed, a new token value is available for download for a short period of time. If the OpCon MFT OpCon Agent configuration is 
-not completed within this specified time an error message will be displayed indicating that the token is not available. If this happens, then a new token must
-be generated using the OpCon MFT Agent software. This can be done by selecting the **Reset Auth Token Deadline** button on the **Scheduler Settings** tab of 
-the **OpConMFT Configurator**. 
+After the OpCon MFT agent is installed, a new token value is available for download for a short period of time. If the OpCon MFT OpCon Agent configuration is not completed within this specified time an error message will be displayed indicating that the token is not available. If this happens, then a new token must be generated using the OpCon MFT Agent software. This can be done by selecting the **Reset Auth Token Deadline** button on the **Scheduler Settings** tab of the **OpConMFT Configurator**. 
 
 ## OpCon MFT Agent Configuration
 The configuration of the OpCon MFT Agent is done using Solution Manager.
@@ -56,8 +52,7 @@ Select the **Communications Settings** tab and enter the **JORS Port Number** wh
 Save the configuration.
 
 The next step is to complete the Authentication process which consists of connecting to the OpCon MFT Agent for the first time and obtaining a token which will be used for future communication.
-There is a timeout value of 100 seconds between the completion of the OpCon MFT Agent installation and performing the initial authentication step. If this is not completed within the time frame,
-it will not be possible to authenticate. The following message will be displayed **Unable to update authentication token for machine** reason ***The request was cancelled due to the configured HttpClient.Timeout of 100 seconds***. 
+There is a timeout value of 100 seconds between the completion of the OpCon MFT Agent installation and performing the initial authentication step. If this is not completed within the time frame, it will not be possible to authenticate. The following message will be displayed **Unable to update authentication token for machine** reason ***The request was cancelled due to the configured HttpClient.Timeout of 100 seconds***. 
 
 When this occurs it will be necessary to reset the auth token deadline and re-authenticate. See **OpConMFT Agent Installation** for process.
 

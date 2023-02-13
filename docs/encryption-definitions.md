@@ -1,33 +1,20 @@
 # Encryption Definitions
 
-The OpCon MFT Agent incorporates abilities to encrypt and decrypt files using PGP cryptography and for managing a PGP keyring. PGP is a commonly recognized method 
-of what is referred to as strong cryptography. Cryptography is the science of using mathematics to encrypt and decrypt data. PGP cryptography enables you to protect 
-sensitive information when it is stored locally or transmitted across the Internet so it cannot be read by anyone except the intended recipient.
+The OpCon MFT Agent incorporates abilities to encrypt and decrypt files using PGP cryptography and for managing a PGP keyring. PGP is a commonly recognized method of what is referred to as strong cryptography. Cryptography is the science of using mathematics to encrypt and decrypt data. PGP cryptography enables you to protect sensitive information when it is stored locally or transmitted across the Internet so it cannot be read by anyone except the intended recipient.
 
-To use PGP in conjunction with OpCon MFT, you and the FTP site must be in agreement to use PGP cryptography. Furthermore, you most likely would not use PGP cryptography 
-when connecting to a secure SSH or TLS FTP site.
+To use PGP in conjunction with OpCon MFT, you and the FTP site must be in agreement to use PGP cryptography. Furthermore, you most likely would not use PGP cryptography when connecting to a secure SSH or TLS FTP site.
 
-PGP utilizes public key cryptography. Public key cryptography is a scheme that uses a pair of keys for encryption: a public key, which encrypts files, and a corresponding 
-private, or secret key for decryption. You provide your public key to anyone you want to receive the encrypted information from while keeping your private key secret.
+PGP utilizes public key cryptography. Public key cryptography is a scheme that uses a pair of keys for encryption: a public key, which encrypts files, and a corresponding private, or secret key for decryption. You provide your public key to anyone you want to receive the encrypted information from while keeping your private key secret.
 
-Anyone with a copy of your public key can then encrypt information that only you can read. Conversely, If you have someone else’s public key, you can encrypt information 
-that only they can read - in other words, only the person who has the corresponding private key can decrypt the information.
+Anyone with a copy of your public key can then encrypt information that only you can read. Conversely, If you have someone else’s public key, you can encrypt information that only they can read - in other words, only the person who has the corresponding private key can decrypt the information.
 
-PGP, as implemented by the OpCon MFT Agent, permits you to create keys of three different sizes (measured in bits): 1024, 2048, and 4096. Larger keys will be cryptographically 
-secure for a longer period of time. If what you want to encrypt needs to be hidden for many years, you might want to use the largest key. The OpCon MFT Agent stores keys in an 
-encrypted form on disk. As you use PGP, you will typically import the public keys of your recipients. If you lose your private key, you will be unable to decrypt any information encrypted with its associated public key.
+PGP, as implemented by the OpCon MFT Agent, permits you to create keys of three different sizes (measured in bits): 1024, 2048, and 4096. Larger keys will be cryptographically secure for a longer period of time. If what you want to encrypt needs to be hidden for many years, you might want to use the largest key. The OpCon MFT Agent stores keys in an encrypted form on disk. As you use PGP, you will typically import the public keys of your recipients. If you lose your private key, you will be unable to decrypt any information encrypted with its associated public key.
 
-When encrypting a file, the public key of the recipient must be specified. Keys are identified by any combination of user name, comment, and/or e-mail address. This combination 
-will be referred to as the key name. 
+When encrypting a file, the public key of the recipient must be specified. Keys are identified by any combination of user name, comment, and/or e-mail address. This combination will be referred to as the key name. 
 
-PGP encrypted files may contain digital signatures. Digital signatures enable the recipient of a file to verify the authenticity of the information's origin, and also verify 
-that the information has not been tampered with. A digital signature will also prevent the sender from claiming that he or she did not actually send the information. Therefore, 
-a digital signature serves the same purpose as a handwritten signature in that it attests to the contents of the information as well as to the identity of the signer. The 
-signature will provide verification as long as the sender's private key was not compromised after after it was sent.
+PGP encrypted files may contain digital signatures. Digital signatures enable the recipient of a file to verify the authenticity of the information's origin, and also verify that the information has not been tampered with. A digital signature will also prevent the sender from claiming that he or she did not actually send the information. Therefore, a digital signature serves the same purpose as a handwritten signature in that it attests to the contents of the information as well as to the identity of the signer. The signature will provide verification as long as the sender's private key was not compromised after after it was sent.
 
-PGP key files and encrypted files may be saved in a format referred to as ASCII armored. This format is an encrypted representation of a file consisting entirely of printable 
-ASCII (or text-mode only) characters. Files in this format contain no binary values, and therefore may be easily sent as part of e-mail messages and visually examined using 
-programs like Notepad.
+PGP key files and encrypted files may be saved in a format referred to as ASCII armored. This format is an encrypted representation of a file consisting entirely of printable ASCII (or text-mode only) characters. Files in this format contain no binary values, and therefore may be easily sent as part of e-mail messages and visually examined using programs like Notepad.
 
 ## OpCon MFT PGP Implementation
 The OpCon MFT Agent is an FTP client and not a comprehensive PGP encryption tool, but does provide the basic functionality required to utilize PGP.
@@ -103,8 +90,7 @@ Every type of TLS connection supported by OpCon MFT derives its encryption from 
 OpCon MFT will not establish a TLS connection unless it trusts the server's certificate. OpCon MFT automatically trusts a certificate signed by a previously trusted Certificate Authority. The operating system maintains a list of trusted CAs and OpCon MFT provides a method allowing you to explicitly trust a certificate not on the list.
 
 ### TLS Connections
-OpCon MFT uses the Transport Layer Security (TLS) protocol for FTPS and HTTPS connections. The Secure Sockets Layer (SSL) protocol was developed by Netscape to add privacy, integrity and authentication to the standard HTTP protocol but it ultimately became the normal method for securing almost all internet traffic. After SSL version 3.0, the protocol was renamed to TLS. 
-The process of establishing a TLS connection is sometimes referred to as "negotiation" or a "handshake."
+OpCon MFT uses the Transport Layer Security (TLS) protocol for FTPS and HTTPS connections. The Secure Sockets Layer (SSL) protocol was developed by Netscape to add privacy, integrity and authentication to the standard HTTP protocol but it ultimately became the normal method for securing almost all internet traffic. After SSL version 3.0, the protocol was renamed to TLS. The process of establishing a TLS connection is sometimes referred to as "negotiation" or a "handshake."
 
 #### Establishing Unilateral Connections
 In a unilateral TLS connection, only the server computer provides a certificate. To establish a unilateral connection, OpCon MFT requests a secure connection from a remote site. If the remote server is capable, it responds agreeing to the secure connection and providing a TLS certificate. If OpCon MFT trusts the server's certificate it creates a temporary random encryption key, encrypts it using the server's public key, and sends it back to the server. Because the temporary key was encrypted using the server's public key it can only be decrypted with the server's private key. At this point the temporary key is a secret known only to OpCon MFT and the server. The temporary key is used to encrypt all subsequent communication between OpCon MFT and the server for the duration of the TLS session and is discarded when the session ends.

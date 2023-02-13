@@ -16,10 +16,10 @@ The SMAApiClientModels module provides some generic definitions for establishing
 support Rest-API requests to the OpCon MFT Agent. It also includes the routines that generate the various steps from the OpCon task
 definitions which are passed to the OpCon MFT Agent.
 
-## SMANetcom AgentProxy Framework
+## SMANetCom AgentProxy Framework
 The AgentProxy framework is part of SMANetCom and is responsible for passing requests to the Associated AgentProxy. 
 
-SMANetcom retrieves the TX1 and TX2 messages from the MSGS_TO_SAM table and checks to see if these messages are for AgentProxies. If
+SMANetCom retrieves the TX1 and TX2 messages from the MSGS_TO_SAM table and checks to see if these messages are for AgentProxies. If
 the messages are for AgentProxies, the AgentProxy framework delivers the messages to the associated AgentProxy. Returned messages are
 placed in the MSGS_TO_SAM table by the AgentProxy framework.
 
@@ -208,8 +208,7 @@ Target File C:\TestData\output\RMA.zip.pgp
 
 ## Retrieving Job Information from OpConMFT Agent
 
-It is possible to retrieve the job information using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent 
-is installed (not an OpCon user).
+It is possible to retrieve the job information using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
 
 ![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
 
@@ -318,7 +317,7 @@ The new OpCon MFT Agent is defined in the LSAMTYPES table as **LSAMTYPEID** 25 a
 
 ### LSAMTYPES_AUX Table
 
-For the OpConMFT Agent to support the JORS capability, the following two entries must be present:
+For the OpCon MFT Agent to support the JORS capability, the following two entries must be present:
 **LSAMTYPEID** | **LAFC** | **LASEQNO** | **LAVALUE**
 -------------- | -------- | ----------- | -----------
 25             | 62       | 1           | True

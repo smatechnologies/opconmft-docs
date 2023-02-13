@@ -31,8 +31,7 @@ information is stored within the OpCon MFT Agent environment.
 The OpCon MFT ProxyAgent provides the communications connections between OpCon and the OpCon MFT Agent. The ProxyAgent accepts the traditional OpCon 
 TX messages from SMANetcom, mapping them to OpCon MFT Agent Rest-API calls. 
 
-At a task start request, the OpCon unique jobId (integer portion) is passed to the OpCon MFT Agent along with the task definition information. The ProxyAgent
-receives the OpCon MFT unique jobId as part of a successful task start and this value is saved in the OpCon database for restarting a failed OpCon MFT task.
+At a task start request, the OpCon unique jobId (integer portion) is passed to the OpCon MFT Agent along with the task definition information. The ProxyAgent receives the OpCon MFT unique jobId as part of a successful task start and this value is saved in the OpCon database for restarting a failed OpCon MFT task.
 
 The ProxyAgent continuously monitors the status of the OpCon MFT Agent marking the Agent as available or unavailable for job starts.
 

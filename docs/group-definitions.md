@@ -35,7 +35,7 @@ Field                 | Description
 **Email To**          | The email address where error notifications will be sent. To include multiple addresses, separate each one with a comma (,).
 **Message Subject**   | Subject line of error notification emails (use macros to provide default information). 
 **Message Body**      | Email body of error notification emails (use macros to provide default information). 
-**Attch Log Files**   | Select the checkbox to attach the log files to the error notification.
+**Attach Log Files**  | Select the checkbox to attach the log files to the error notification.
 
 
 It is possible to perform macro substitution in the subject and message data by using the & sign to indicate string concatenation between macros and literal quoted strings.   
