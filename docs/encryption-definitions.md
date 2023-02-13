@@ -1,60 +1,49 @@
 # Encryption Definitions
 
-The OpConMFT Agent incorporates abilities to encrypt and decrypt files using PGP cryptography and for managing a PGP keyring. PGP is a commonly recognized method 
-of what is referred to as strong cryptography. Cryptography is the science of using mathematics to encrypt and decrypt data. PGP cryptography enables you to protect 
-sensitive information when it is stored locally or transmitted across the Internet so it cannot be read by anyone except the intended recipient.
+The OpCon MFT Agent incorporates abilities to encrypt and decrypt files using PGP cryptography and for managing a PGP keyring. PGP is a commonly recognized method of what is referred to as strong cryptography. Cryptography is the science of using mathematics to encrypt and decrypt data. PGP cryptography enables you to protect sensitive information when it is stored locally or transmitted across the Internet so it cannot be read by anyone except the intended recipient.
 
-To use PGP in conjunction with OpConMFT, you and the FTP site must be in agreement to use PGP cryptography. Furthermore, you most likely would not use PGP cryptography 
-when connecting to a secure SSH or TLS FTP site.
+To use PGP in conjunction with OpCon MFT, you and the FTP site must be in agreement to use PGP cryptography. Furthermore, you most likely would not use PGP cryptography when connecting to a secure SSH or TLS FTP site.
 
-PGP utilizes public key cryptography. Public key cryptography is a scheme that uses a pair of keys for encryption: a public key, which encrypts files, and a corresponding 
-private, or secret key for decryption. You provide your public key to anyone you want to receive the encrypted information from while keeping your private key secret.
+PGP utilizes public key cryptography. Public key cryptography is a scheme that uses a pair of keys for encryption: a public key, which encrypts files, and a corresponding private, or secret key for decryption. You provide your public key to anyone you want to receive the encrypted information from while keeping your private key secret.
 
-Anyone with a copy of your public key can then encrypt information that only you can read. Conversely, If you have someone else’s public key, you can encrypt information 
-that only they can read - in other words, only the person who has the corresponding private key can decrypt the information.
+Anyone with a copy of your public key can then encrypt information that only you can read. Conversely, If you have someone else’s public key, you can encrypt information that only they can read - in other words, only the person who has the corresponding private key can decrypt the information.
 
-PGP, as implemented by the OpConMFT Agent, permits you to create keys of three different sizes (measured in bits): 1024, 2048, and 4096. Larger keys will be cryptographically 
-secure for a longer period of time. If what you want to encrypt needs to be hidden for many years, you might want to use the largest key. The OpConMFT Agent stores keys in an 
-encrypted form on disk. As you use PGP, you will typically import the public keys of your recipients. If you lose your private key, you will be unable to decrypt any information encrypted with its associated public key.
+PGP, as implemented by the OpCon MFT Agent, permits you to create keys of three different sizes (measured in bits): 1024, 2048, and 4096. Larger keys will be cryptographically secure for a longer period of time. If what you want to encrypt needs to be hidden for many years, you might want to use the largest key. The OpCon MFT Agent stores keys in an encrypted form on disk. As you use PGP, you will typically import the public keys of your recipients. If you lose your private key, you will be unable to decrypt any information encrypted with its associated public key.
 
-When encrypting a file, the public key of the recipient must be specified. Keys are identified by any combination of user name, comment, and/or e-mail address. This combination 
-will be referred to as the key name. 
+When encrypting a file, the public key of the recipient must be specified. Keys are identified by any combination of user name, comment, and/or e-mail address. This combination will be referred to as the key name. 
 
-PGP encrypted files may contain digital signatures. Digital signatures enable the recipient of a file to verify the authenticity of the information's origin, and also verify 
-that the information has not been tampered with. A digital signature will also prevent the sender from claiming that he or she did not actually send the information. Therefore, 
-a digital signature serves the same purpose as a handwritten signature in that it attests to the contents of the information as well as to the identity of the signer. The 
-signature will provide verification as long as the sender's private key was not compromised after after it was sent.
+PGP encrypted files may contain digital signatures. Digital signatures enable the recipient of a file to verify the authenticity of the information's origin, and also verify that the information has not been tampered with. A digital signature will also prevent the sender from claiming that he or she did not actually send the information. Therefore, a digital signature serves the same purpose as a handwritten signature in that it attests to the contents of the information as well as to the identity of the signer. The signature will provide verification as long as the sender's private key was not compromised after after it was sent.
 
-PGP key files and encrypted files may be saved in a format referred to as ASCII armored. This format is an encrypted representation of a file consisting entirely of printable 
-ASCII (or text-mode only) characters. Files in this format contain no binary values, and therefore may be easily sent as part of e-mail messages and visually examined using 
-programs like Notepad.
+PGP key files and encrypted files may be saved in a format referred to as ASCII armored. This format is an encrypted representation of a file consisting entirely of printable ASCII (or text-mode only) characters. Files in this format contain no binary values, and therefore may be easily sent as part of e-mail messages and visually examined using programs like Notepad.
 
-## OpConMFT PGP Implementation
-The OpConMFT Agent is an FTP client and not a comprehensive PGP encryption tool, but does provide the basic functionality required to utilize PGP.
+## OpCon MFT PGP Implementation
+The OpCon MFT Agent is an FTP client and not a comprehensive PGP encryption tool, but does provide the basic functionality required to utilize PGP.
 
-The following functionality is provided by the OpConMFT Configurator:
+The following functionality is provided by the OpCon MFT Configurator:
  
 - The creation of private and public key(s).
-- The ability to export public keys to ASCII armored and non-ASCII armored files. ASCII armored key files are plain-text files; non-armored files are in a binary format. Exported public key files are signed by the matching  private key, if it is available.
+- The ability to export public keys to ASCII armored and non-ASCII armored files. ASCII armored key files are plain-text files; non-armored files are in a binary format. Exported public key files are signed by the matching private key, if it is available.
 - The ability to export public and private key pairs to be shared with other applications that need to access your pgp encrypted files. The private key will still be encrypted with its passphrase.
 - The ability to import key(s)
 - The ability to delete key(s)
 
 PGP has the added advantage of compression. Much like a zip file, files that are encoded using PGP are also compressed. These file(s) are expanded and restored to their original state when they are decrypted by their intended recipient.
 
-## Using PGP with OpConMFT
+## Using PGP with OpCon MFT
 
-PGP encryption is currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+PGP encryption is currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
-![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
 
-To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
-Select the **OpConMFT Agent Settings** TAB and then select **PGP Key Management**. 
-Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to PGP Key Management associated with the OpConMFT Agent. 
+To define PGP keys, edit the associated OpCon MFT agent details using Solution Manager.
+Select the **OpCon MFT Agent Settings** TAB and then select **PGP Key Management**. 
+Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to PGP Key Management associated with the OpCon MFT Agent. 
 
  - Using PGP with OpConMFT: A PGP public/private key-pair will be required and can be provided, either by creating a new pair or by importing an existing pair.
  - Encrypting a file with OpConMFT: The recipient's public key must be imported prior to encryption.
  - Decrypting a file with OpConMFT: Export your public key and send it to the recipient who will be encrypting the file so it can be applied during the encryption process.
+ 
+![PGP Key Menu](../static/img/pgp-key-main-menu.png)
 
 ### Creating a New Key-Pair
 
@@ -72,7 +61,7 @@ Field                           | Description
 **Key Expires**                 | Select the key expiration date (***Never or enter an expiration date***).
 **Key PassPhrase**              | Define a Passphrase.
 **Key PassPhrase Verification** | Re-enter the Passphrase for verification.
-**Save PassPhrase**             | Select ***Save Passphrase*** to store it in the encrypted password store for use for automatic use with OpConMFT PGP commands.
+**Save PassPhrase**             | Select ***Save Passphrase*** to store it in the encrypted password store for use for automatic use with OpCon MFT PGP commands.
 
 When completed select the **OK** to save the new definition.
 
@@ -80,7 +69,7 @@ When completed select the **OK** to save the new definition.
 
 Click the ***Import Key*** button. 
 
-You may import a key-pair, Public key, or a whole keyring into OpConMFT by following these steps:
+You may import a key-pair, Public key, or a whole keyring into OpCon MFT by following these steps:
 
 ![Import Key-Pair](../static/img/encryption-import-key-pair.png)
 
@@ -95,29 +84,28 @@ A certificate is a digitally signed document that identifies a person, organizat
 
 In addition to the signature, a typical digital certificate also contains: the identity of the site, the identity of the person or organization that signed the certificate, the certificate's expiration date, the ID of the algorithm used to create the signature, the public key used for encryption, a cryptographic ***thumbprint hash*** to ensure that the contents of the certificate have not been modified, and a brief description of the intended purpose of the certificate. 
 
-Every type of TLS connection supported by OpConMFT derives its encryption from a trusted server host certificate while only the most secure connections also require client certificates. The primary purpose of client certificates is to authenticate the user and is used in lieu of a password on some servers. OpConMFT provides a tool that allows you to generate your own client-side certificate. With OpConMFT, you can specify a different client certificate for each managed site or define one default client certificate to use whenever a client certificate is required.
+Every type of TLS connection supported by OpCon MFT derives its encryption from a trusted server host certificate while only the most secure connections also require client certificates. The primary purpose of client certificates is to authenticate the user and is used in lieu of a password on some servers. OpCon MFT provides a tool that allows you to generate your own client-side certificate. With OpCon MFT, you can specify a different client certificate for each managed site or define one default client certificate to use whenever a client certificate is required.
 
 ### Trusting a Certificate
-OpConMFT will not establish a TLS connection unless it trusts the server's certificate. OpConMFT automatically trusts a certificate signed by a previously trusted Certificate Authority. The operating system maintains a list of trusted CAs and OpCOnMFT provides a method allowing you to explicitly trust a certificate not on the list.
+OpCon MFT will not establish a TLS connection unless it trusts the server's certificate. OpCon MFT automatically trusts a certificate signed by a previously trusted Certificate Authority. The operating system maintains a list of trusted CAs and OpCon MFT provides a method allowing you to explicitly trust a certificate not on the list.
 
 ### TLS Connections
-OpConMFT uses the Transport Layer Security (TLS) protocol for FTPS and HTTPS connections. The Secure Sockets Layer (SSL) protocol was developed by Netscape to add privacy, integrity and authentication to the standard HTTP protocol but it ultimately became the normal method for securing almost all internet traffic. After SSL version 3.0, the protocol was renamed to TLS. 
-The process of establishing a TLS connection is sometimes referred to as "negotiation" or a "handshake."
+OpCon MFT uses the Transport Layer Security (TLS) protocol for FTPS and HTTPS connections. The Secure Sockets Layer (SSL) protocol was developed by Netscape to add privacy, integrity and authentication to the standard HTTP protocol but it ultimately became the normal method for securing almost all internet traffic. After SSL version 3.0, the protocol was renamed to TLS. The process of establishing a TLS connection is sometimes referred to as "negotiation" or a "handshake."
 
 #### Establishing Unilateral Connections
-In a unilateral TLS connection, only the server computer provides a certificate. To establish a unilateral connection, OpConMFT requests a secure connection from a remote site. If the remote server is capable, it responds agreeing to the secure connection and providing a TLS certificate. If OpConMFT trusts the server's certificate it creates a temporary random encryption key, encrypts it using the server's public key, and sends it back to the server. Because the temporary key was encrypted using the server's public key it can only be decrypted with the server's private key. At this point the temporary key is a secret known only to OpConMFT and the server. The temporary key is used to encrypt all subsequent communication between OpConMFT and the server for the duration of the TLS session and is discarded when the session ends.
+In a unilateral TLS connection, only the server computer provides a certificate. To establish a unilateral connection, OpCon MFT requests a secure connection from a remote site. If the remote server is capable, it responds agreeing to the secure connection and providing a TLS certificate. If OpCon MFT trusts the server's certificate it creates a temporary random encryption key, encrypts it using the server's public key, and sends it back to the server. Because the temporary key was encrypted using the server's public key it can only be decrypted with the server's private key. At this point the temporary key is a secret known only to OpCon MFT and the server. The temporary key is used to encrypt all subsequent communication between OpCon MFT and the server for the duration of the TLS session and is discarded when the session ends.
 
 #### Establishing Bilateral Connections
-In some enterprise situations where security is a special concern, the remote server may require OpConMFT to provide a client certificate to prove your identity before agreeing to the TLS connection. This is known as a bilateral connection or "mutual authentication."  
+In some enterprise situations where security is a special concern, the remote server may require OpCon MFT to provide a client certificate to prove your identity before agreeing to the TLS connection. This is known as a bilateral connection or "mutual authentication."  
 
-### Using TLS with OpConMFT
-TLS certificates are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+### Using TLS with OpCon MFT
+TLS certificates are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
-![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
 
-To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
-Select the **OpConMFT Agent Settings** TAB and then select **TLS Certificate Management**.
-Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to TLS Certificate Management associated with the OpConMFT Agent. 
+To define Certificates, edit the associated OpCon MFT agent details using Solution Manager.
+Select the **OpCon MFT Agent Settings** TAB and then select **TLS Certificate Management**.
+Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to TLS Certificate Management associated with the OpCon MFT Agent. 
 
 ![Certificates](../static/img/add-certificate.png)
 
@@ -128,7 +116,7 @@ Click the ***Create Key*** button.
 Field                     | Description
 --------------------------| -----------
 **Country**               | (Required) The value of Country is typically a 2-letter code. Example: US for United States of America. 
-**State/Provive/Region**  | (Required) A value indicating the state, provice or region within the country.
+**State/Provive/Region**  | (Required) A value indicating the state, province or region within the country.
 **City/Town**             | (Required) the name of the city or town within the state, province or region.  
 **Organization**          | (Required) Full legal name of an organization or person.
 **Unit**                  | (Required) Branch of organization. Examples: IT, marketing, etc.
@@ -137,7 +125,7 @@ Field                     | Description
 **Password**              | (Required) The password associated with the certificate.
 **Verify Password**       | (Required) Retype the password in the verification box.
 
-When completed select the **Create Self Signed** to create a self-signed certificate or **Create Signing Request** to generate a signing request that can be sumitted to a CA.
+When completed select the **Create Self Signed** to create a self-signed certificate or **Create Signing Request** to generate a signing request that can be submitted to a CA.
 
 Click the ***Import Key*** button to import a certificate received from a CA.
 
@@ -164,19 +152,19 @@ When negotiating a connection with a remote SFTP server, SSH2 is required and ci
 - 2.diffie-hellman-group14-sha1
 - 3.diffie-hellman-group1-sha1
 
-OpConMFT supports SFTP transfers over SSH. The specific security method is dictated by the remote site and OpCOnMFT SSH to be compatible with as many servers as possible. 
+OpCon MFT supports SFTP transfers over SSH. The specific security method is dictated by the remote site and OpCon MFT SSH to be compatible with as many servers as possible. 
 
-When negotiating a secure connection, the necessary encryption details are automatically downloaded from the remote server. In the case of SSH it downloads the host's public key. The first time you connect to any particular secure site you must decide if you trust the server's certificate or key. If you trust the server's credentials, OpConMFT stores a copy of them for future use. On subsequent connection attempts, OpCOnMFT compares the site's current credentials to the trusted copies and automatically connects if the credentials match.
+When negotiating a secure connection, the necessary encryption details are automatically downloaded from the remote server. In the case of SSH it downloads the host's public key. The first time you connect to any particular secure site you must decide if you trust the server's certificate or key. If you trust the server's credentials, OpCon MFT stores a copy of them for future use. On subsequent connection attempts, OpCon MFT compares the site's current credentials to the trusted copies and automatically connects if the credentials match.
 
-Every type of secure connection supported by OpConMFT will require trusting the remote server but some sites will require more than a simple username and password before they trust you. OpConMFT configuration supports uploads of personal client certificates or public keys. The OpConMFT Configurator supports defining default credentials for use with all secure sites or specific personal credentials for each managed site. In addition to this, it can also be used to generate SSH keys.
+Every type of secure connection supported by OpCon MFT will require trusting the remote server but some sites will require more than a simple username and password before they trust you. OpCon MFT configuration supports uploads of personal client certificates or public keys. The OpCon MFT Configurator supports defining default credentials for use with all secure sites or specific personal credentials for each managed site. In addition to this, it can also be used to generate SSH keys.
 
-SSH keys are currently defined using the OpConMFT Agent Web Server. A connection to the OpConMFT Agent Web Server requires a user / password for system where the OpConMFT Agent is installed (not an OpCon user).
+SSH keys are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
-![OpConMFT Agent Details](../static/img/opconmft-agent-details.png)
+![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
 
-To define Endpoints, edit the associated OpConMFT agent details using Solution Manager.
-Select the **OpConMFT Agent Settings** TAB and then select **SSH Key Management**.
-Enter the credentials for the OpConMFT Agent Web Server in the pop-up window and you will be routed to SSH Key Management associated with the OpConMFT Agent. 
+To define SSH Keys, edit the associated OpCon MFT agent details using Solution Manager.
+Select the **OpCon MFT Agent Settings** TAB and then select **SSH Key Management**.
+Enter the credentials for the OpCon MFT Agent Web Server in the pop-up window and you will be routed to SSH Key Management associated with the OpCon MFT Agent. 
 
 ![SSH Keys](../static/img/encryption-ssh-keys.png)
 
