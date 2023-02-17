@@ -136,7 +136,7 @@ The ***decompress*** step inflates compressed files from the current file set. A
 Field                      | Description
 -------------------------- | -----------
 **Password**               | An optional definition that defines a password that must be used to decompress the file.
-**Extract Filter**         | The compressed file could contain multiple files and it is therefore possible to only require specific files within the compressed file. It is possible to extract these specific files by defining a filter (i.e. \*.csv|\*.xls).
+**Extract Filter**         | The compressed file could contain multiple files and it is therefore possible to only require specific files within the compressed file. Use **\*** to extract all files or specific files by defining a file type using wild cards. Multiple types can be entered using the pipe (|) character as a separation character (i.e. \*.csv|\*.xls).
 
 #### Encryption
 The optional Encryption section defines the information for the ***encrypt*** or ***decrypt*** steps. 
