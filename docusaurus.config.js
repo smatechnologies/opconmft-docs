@@ -3,7 +3,7 @@ module.exports = {
   title: 'SMA Technologies Help',
   tagline: 'OpCon MFT',
   url: 'https://help.smatechnologies.com',
-  baseUrl: '/opcon/connectors/opconmft/',
+  baseUrl: '/opcon/agents/opconmft/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
