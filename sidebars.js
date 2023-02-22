@@ -2,7 +2,7 @@ module.exports = {
   mySidebar: [
     'index',
     'architecture',
-    'installation',
+    'Installation',
     'endpoint-definitions',
     'encryption-definitions',
     'group-definitions',
