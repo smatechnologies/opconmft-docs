@@ -1,7 +1,7 @@
 # Endpoint Definitions
 Endpoints are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
-![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)
+![OpCon MFT Agent Details](../static/img/opconmft-agent-details.png)
 
 To define Endpoints, edit the associated OpCon MFT agent details using Solution Manager.
 Select the **OpCon MFT Agent Settings** TAB and then select either **Path Endpoints** for defining UNC paths or directories or **Manage Sites** for defining remote servers.

@@ -33,10 +33,29 @@ Select the **Scheduler** option from the tree view and then the **Scheduler Sett
 
 ### Enable Use SSL/TLS
 The connection between OpCon and the OpCon MFT Agent requires a https connection instead of the default http connection. 
+
+Using the Configurator, define a self-signed certificate or extract the information to request purchase a certificate from a CA authority.
+Select the **TLS Certificates** option from the tree view and select **create**.
+
+Enter the information for the certificate.
+
+Field                      | Description
+-------------------------- | -----------
+**City/Town**              | Enter the name of your city or town.
+**Organization**           | Enter the name of your organization.
+**State/Province/Region**  | Enter the name of the area you are located in.
+**Common Name**            | Enter a name for the certificate (i.e. OpConMFTxxx - where xxx is a unique value in case you more than one OpCon MFT Agent).
+**Country**                | Enter the name of your country.
+**Unit**                   | Enter the name of your unit within your organization.
+**Password**               | Enter a password that will be associated with the certificate.
+**Verify Password**        | Re-enter the password.
+**E-mail Address**         | Enter a valid email address that will be associated with the certificate.
+
+Select **Create Self Signed** to create a certificate or **Create Signing Request** to produce the information to purchase a certificate from a CA.
+
 On the **Scheduler Settings** screen, ensure that the **Use SSL/TLS** option is selected. 
-After this is selected, a certificate must be provided for the connection. If there is no a valid certificate to import, then either create the information
-to purchase a certificate or create a self-signed certificate (see **Using TLS with OpCon MFT** section of **encryption-definitions**). 
-Once the certificate has created or imported, set the certificate as the default for the OpCon MFT Agent.  
+
+Now select the browse option next to the **Use SSL/TLS** field and select the self-signed certificate you created or a certificate you imported. 
 
 ![OpCon MFT Agent Scheduler Settings Tab](../static/img/opcon-mft-agent-configurator-scheduler-settings.png)
 
