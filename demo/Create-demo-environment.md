@@ -14,6 +14,62 @@ The demonstration will use two Path Endpoints to demonstrate moving data using t
 - move a file between endpoints using compression and encryption. 
 - move the created compressed, encrypted file between endpoints, decrypting and decompressing the file and placing the result in a decompressed directory.
 
+## Regex Tester
+The demonstration environment includes a regex tester program in the regex-tester directory. This is a Perl program that can be used to test the **Search** and
+**Replace** regex patterns.
+
+To use this program download and install the latest version of the Perl software.
+
+The program has three options:
+
+Option  | Description
+--------| -----------
+**-s**  | (Required) A string that provides the data to perform the regex test against. 
+**-p**  | (Required) A string representing the regex search pattern. 
+**-r**  | (Required) A string representing the regex replace pattern. 
+
+Examples:
+
+Replace the extension of file with a new extension name.
+
+```
+C:\perl>perl RegexCheck.pl -p "^(.*)\.[^.]+$" -r "${1}.txt" -s "c:\file\test.dat"
+--------------------------------------
+searchString   = c:\file\test.dat
+searchPattern  = ^(.*)\.[^.]+$
+replacePattern = "${1}.txt"
+match result   = c:\file\test
+--------------------------------------
+replace result = c:\file\test.txt
+--------------------------------------
+```
+Move all files to a new directory, irrespective of sub-directories.
+
+```
+C:\perl>perl RegexCheck.pl -p ".*\\(.*)$" -r "all_files_go_here\\${1}" -s "c:\file\test.dat"
+--------------------------------------
+searchString   = c:\file\test.dat
+searchPattern  = .*\\(.*)$
+replacePattern = "all_files_go_here\\${1}"
+match result   = test.dat
+--------------------------------------
+replace result = all_files_go_here\test.dat
+--------------------------------------
+```
+
+Replace a directory in the path with a new value:
+```
+C:\perl>perl RegexCheck.pl -p "\\file\\(.*)$" -r "\\new_dir\\${1}" -s "c:\file\test.dat"
+--------------------------------------
+searchString   = c:\file\test.dat
+searchPattern  = \\file\\(.*)$
+replacePattern = "\\new_dir\\${1}"
+match result   = test.dat
+--------------------------------------
+replace result = c:\new_dir\test.dat
+--------------------------------------
+```
+
 ## Requirements
 The following components are required:
 - Windows Server 
