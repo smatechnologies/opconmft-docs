@@ -1,11 +1,18 @@
 # Installation
 
->OpCon MFT Server requires OpCon version 22.4 or greater and OpCon MFT version 3.13.1 or greater.
+## License Keys
 
->***Before starting an installation, an updated OpCon License key including an OpConMFT Agent type and an OpConMFT Server must be obtained. Failure to do this will 
-result in a license Violation when the defined OpCon MFT agent is activated in OpCon and will result in OpCon termination if the activated OpConMFT Agent is not 
-deactivated within the specified time.***
+### Task Based License 2.0
 
+>***Before starting an installation, an updated OpCon License key including a license for the OpConMFT Server must be obtained. Failure to do this will result in the OpCon MFT not being visible within Solution Manager.***
+
+### Other License Types
+
+>***Before starting an installation, an updated OpCon License key including an OpConMFT Agent type and an OpConMFT Server must be obtained. Failure to do this will result in a license Violation when the defined OpCon MFT agent is activated in OpCon and will result in OpCon termination if the activated OpConMFT Agent is not deactivated within the specified time.***
+
+## General
+
+OpCon MFT Server requires OpCon version 22.4 or greater and OpCon MFT version 3.13.1 or greater.
 
 The OpCon MFT Server is installed automatically as part of the OpCon MFT Agent. 
 
@@ -59,6 +66,11 @@ Select the **FTP Server** Menu Item.
 To enable web file sharing, set a port number for the HTTP port value. It is better to use a specific port instead of the default port (80).
 Select the **Start FTP** button to start the FTP Server.
 
+For additional information on fields associated with configuring the FTP / SFTP server open the help file associated with the OpCOn MFT Server.
+
+***Server Console -> FTP Server ***
+***Server Console -> SFTP Server ***
+
 ## Define OpCon MFT Server users 
 
 All users that will retrieve or deposit files on the OpCon MFT Server must be configured directly within the server. 
@@ -68,4 +80,11 @@ All users that will retrieve or deposit files on the OpCon MFT Server must be co
 Start the OpCon MFT Server Console, by Selecting the **Server Console** in the **OpConMFT n.nn** Application Menu.
 
 Select the **Users** Menu Item.
+Select **New** to create a new user.
+Select a user in the list and select **Edit** to make changes to the user definition.
+Select a user in the list and select **Remove** to remove the user.
+
+For additional information on fields associated with a user definition open the help file associated with the OpCOn MFT Server.
+
+***Server Console -> Users***
 
