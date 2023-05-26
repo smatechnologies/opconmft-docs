@@ -30,14 +30,12 @@ To rename the extension of the files in the file set .csv use the following defi
 To append a date to all filenames (date format can be defined using tokens) in the file set use the following definitions:
 
   Rename Search Pattern   ^(.*)\.[^.]+$
-  Rename Replace Pattern  "${1}" + ".csv"
+  Rename Replace Pattern  "${1}.csv"
 
 To add a date directory (date format can be defined using tokens) the files in the file set use the following definitions:
 
-To add a date to the target directory (date format can be defined using tokens) of the file set use the File Path field of the Destination section:
-
-  Rename Search Pattern   "\\directory\\(.*)$" 
-  Rename Replace Pattern  "\\directory\101122\\${1}" or "\\directory\[[$SCHEDULE DATE-DDMMYY]]\\${1}"
+  Rename Search Pattern   \\output\\(.*)$
+  Rename Replace Pattern  "\\output\\[[$SCHEDULE DATE-YYYYMMDD]]\\${1}"
 
 ```
 
