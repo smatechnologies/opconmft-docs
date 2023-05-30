@@ -20,8 +20,9 @@ Component | Description
 The OpCon MFT environment comprises of many components that work together to provide the full Managed File Transfer (MFT) solution.
 
 ## Solution Manager
-Provides the User interface for the Managed File Transfer environment and provides capabilities for OpCon MFT task definition, defining  
-endpoints, encryption information, a dashboard providing file transfer status and query functions for current and previous executions. 
+Provides the User interface for the Managed File Transfer environment and provides capabilities for OpCon MFT Agent configuration, OpCon MFT Server 
+activation, OpCon MFT task definition, defining endpoints, encryption information, a dashboard providing file transfer status and query functions for 
+current and previous executions. 
 
 During task definition, the endpoint and encryption information is retrieved from the OpCon MFT Agent and provided in dropdown lists 
 allowing the user to select the appropriate values. Task definitions are stored within the OpCon environment, while endpoint and encryption 
@@ -39,6 +40,11 @@ The ProxyAgent continuously monitors the status of the OpCon MFT Agent marking t
 The LSAMDataRetriever has been modified to support the retrieval of job logs from the OpCon MFT Agent through the OpCon MFT Rest-API. The joblog provides
 information about the task as well as each step executed within the task.
 
+## CloudEvents
+CloudEvents is a new OpCon feature that accepts trigger messages through a webhook and allows the mapping of trigger messages to actions. For OpCon MFT Server supports 
+trigger messages such as file upload, file download, file deleted, file moved, directory deleted, etc. 
+Trigger filters are defined on the incoming messages and once a match is obtained, the associated Trigger event (OpCon event) will be passed to the OpCOn environment for action.
+
 ## OpCon MFT Rest-API
 The OpCon MFT ProxyAgent communicates with the OpCon MFT Agent through the OpCon MFT Rest-API. 
 The Rest-API provides the following functionalities:
@@ -47,6 +53,7 @@ The Rest-API provides the following functionalities:
 - Get the current status of an OpCon MFT task.
 - Retrieve the job log of an OpCon MFT task.
 - Retrieve a list of configured endpoints and encryption information for task definition.
+- Register OpCon MFT Server connection to OpCon Webhook for trigger submission.
 
 ## OpCon MFT Agent 
 The OpCon MFT Agent provides a file transfer capability for B2B interactions. It supports the submission and retrieval of data files between
@@ -65,3 +72,7 @@ optionally using compression and or using encryption on the file set and transfe
 
 During the task execution, the OpCon MFT Agent persists each completed step. If a step fails and the task is restarted, the task will restart from the 
 failed step.
+
+## OpCon MFT Server 
+The OpCon MFT is an additional component of the OpCon MFT Agent. It provides full file server functionality as well as user file-sharing capabilities. 
+It supports the forwarding of triggers to the OpCon CloudEvents feature enabling OpCon to perform actions on the forwarded triggers.  

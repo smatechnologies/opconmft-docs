@@ -27,46 +27,261 @@ To define trigger filter event mapping open the **CloudEvents Triggers** item in
 
 ![OpCon CloudEvents](../static/img/cloudevents-start.png)
 
-To define a CloudEvent, first define the Filter (what to look for).
+To define a CloudEvent, first define the Trigger Filter (what to look for) followed by the Trigger Event (what action to take).
 
-- Select the **+ Add** button.
-- Enter a unique name for the filter in the **Name** field.
-- select the green **+** bar below Trigger Filters to add a filter.
+Filters can be applied to the following types. Once a type has been selected, additional filters can be added on specific items within the type.  
 
-![Define Trigger Filter](../static/img/cloudevents-define-trigger-filter.png)
-
-When defining the trigger filter which field of the trigger should be checked and what within the selected field should be searched for need to be defined.
-
-The following filter fields are supported
-
-Field | Description
+Type        | Description
 ----------- | --------------------------------- 
-**source**  | indicates a value within the trigger information is the filter 
+**source**  | indicates filter on where the message came from
 **type**    | indicates filter on a trigger type
 **time**    | indicates filter on time
 
-### Filter 'source'
+## Filter 'source'
 
-### Filter 'type'
-When a type filter is selected, a drop-down list consisting of **Trigger Types** is displayed. Select the required type from the drop-down list.
+The source filter can be used to determine where the trigger came from.
 
-![Trigger Filter Type](../static/img/cloudevents-filter-type.png)
+For OpConMFT systems, use the name of the OpCon MFT Agent.
 
-### Filter 'time'
+## Filter 'type'
 
-Now define the action (what to do).
+Each trigger type has various fields that can be used to create additional filters. Once a trigger type has been selected, any further type filters will
+provide a drop-down list containing the available fields to filter on for the selected type.   
 
-- select the green **+** bar below Trigger Events to add an action.
+Trigger Type  : MFT Server Logon 
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
 
-![Define Trigger Events](../static/img/cloudevents-events.png)
+Trigger Type  : MFT Server Logoff 
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
 
-When defining trigger events, the type of event can be selected from the drop-down list, or the **edit** icon to the right of the drop down list can be selected which will display the list of global properties available on the OpCon system. This allow actions to be defined and stored in properties and used with CloudEvents.
+Trigger Type  : MFT Server Upload 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Download 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Start
+- data.name
+- data.result
+
+Trigger Type  : MFT Server Copy File 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.targetFile
+- data.targetFolder
+- data.targetPath
+- data.targetFileDateTime
+- data.targetFileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Move File 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.targetFile
+- data.targetFolder
+- data.targetPath
+- data.targetFileDateTime
+- data.targetFileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Move Directory 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.targetFile
+- data.targetFolder
+- data.targetPath
+- data.targetFileDateTime
+- data.targetFileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Delete File 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+Trigger Type  : MFT Server Delete Directory 
+- data.file
+- data.folder
+- data.path
+- data.fileDateTime
+- data.fileSize
+- data.logonUserName
+- data.homeDir
+- data.protocol
+- data.remoteip
+- data.result
+- data.duration
+
+## Filter 'time'
+The filter time uses regex patterns. 
+Future versions of the filter process will include more user friendly approaches to set date/time values.  
+
+## Using Regex Expressions
+When defining filters that have data fields, it possible to use wild cards. However, it should be noted that this is a regex expression and not a wild card selection, therefore
+  - wildcard **input?.dta** becomes **input..dta**
+  - wildcard **input?.\*** becomes **input..\***
+  - wildcard **input.\*** becomes **input.\***
+  - wildcard **\*.dta** not supported     
+
+## Using Data fields in OpCon Events
+It is possible that in some cases, when defining OpCon events, the data fields are not visible in the drop-down lists. If this is the case then the field can
+be entered manually by using the [[$EXTERNAL.DATA.field]] value.
+
+## Trigger Events
+Trigger events define the action to take when the filter conditions match. The events are standard OpCon events. 
+When defining events, the **data** fields associated with the selected Trigger Types can be used to pass information to the event.
+
+![Trigger Event Parameter Selection](../static/img/trigger-event-data-object-selection.png)
+
+To select a Filter Type value, select the **magic wand** to the right of the Event definition field.
+The required argument can then be selected from the drop-down list (arguments are prefixed with the DATA and when inserted into the event definition as [[$EXTERNAL.DATA.argument]]).
+
+## Examples
+
+### ***Display a message on the console when any file arrives on a specific OpCon MFT Server***
+
+A simple CloudEvent to display the name of all incoming files received by the defined MFT Server in the OpCon console. 
+
+- Select the **+ Add** button.
+- For **Filter On Field** select **source** from the drop-down list.
+
+![Filter Type Source](../static/img/cloudevents-filter-source.png)
+
+- For **Filter Value** enter the name of the OpConMFT system (the OpConMFT Agent name). When selected, the regex checker icon to the right of the field can be used to test the regex expression.
+
+![Filter Type Source Regex](../static/img/cloudevents-filter-source-regex-checker.png)
+
+- Select **OK**
+- Select the green **+** bar below Trigger Filters to add a type filter.  
+- For **Filter On Field** select **type** from the drop-down list.
+
+![Filter Type Upload](../static/img/cloudevents-filter-type-upload.png)
+
+- For **Filter Value** select **MFT Server Upload** from the drop-down list.
+- Select **OK**
+- Select the green **+** bar below Trigger Events to add an event. 
+
+![Filter Type Event](../static/img/cloudevents-filter-event-upload.png)
+
+- For **Event Template** select **$CONSOLE:Display** from the drop-down list.
+- In the message section 
+    - enter **File **.
+    - select the **Magic Wand** to the right of the field.
+    - select **$ DATA.FILE** from the drop-down list and select **OK**.
+    - enter ** Arrived**.
+- Select **OK**.    
+
+![Example Display All Files](../static/img/cloudevents-example-display-all-incoming-files.png)
+
+- Select **Save** to save and activate the filter.
+
+### ***Display a message when a specific file arrives in a specific directory on the associated OpCon MFT Server***
+
+Includes multiple filters to detect when a specific file arrives in a specific directory on the MFT Server and displays this in the OpCon console. 
+
+- Select the **+ Add** button.
+- Enter a unique name for the filter in the **Name** field.
+- Select the green **+** bar below Trigger Filters to add a filter.
+
+![Filter Type Upload](../static/img/cloudevents-filter-type-upload.png)
+
+- For **Filter On Field** select **type** from the drop-down list.
+- For **Filter Value** select **MFT Server Upload** from the drop-down list.
+- Select **OK**
+- Select the green **+** bar below Trigger Filters to add a second filter for directory. 
+    - As this is a second filter on the selected type **MFT Server Upload** the drop-down list now contains values that are associated with the event details. The items are prefixed with the word 'data' to indicate that this item is part of the event details.
+- Select **data.folder** from the drop-down.
+- enter **/bertie/input** to indicate which directory the file should arrive in.
+
+![Filter Type Upload Directory](../static/img/cloudevents-filter-type-folder.png)
+
+- Select **OK**.
+
+- Select the green **+** bar below Trigger Filters to add a third filter for file name. 
+    - As this is a third filter on the selected type **MFT Server Upload** the drop-down list now contains values that are associated with the event details. However any previously used values are no longer available in the drop-down list.
+- Select **data.file** from the drop-down.
+- enter **testfile.txt** to indicate which directory the file should arrive in.
+- Select **OK**.
+
+![Filter Type Upload File](../static/img/cloudevents-filter-type-file.png)
+
+- Select the green **+** bar below Trigger Events to add an event. 
+- For **Event Template** select **$CONSOLE:Display** from the drop-down list.
+- In the message section 
+    - enter **File **.
+    - select the **Magic Wand** to the right of the field.
+    - select **$ DATA.FOLDER** from the drop-down list and select **OK**.
+    - enter **/**.
+    - select **$ DATA.FILE** from the drop-down list and select **OK**.
+    - enter ** Arrived**.
+  
+![Define Trigger Filter](../static/img/cloudevents-filter-event-specific-upload.png)
+
+- Select **OK**.  
+
+![Example Display Specific File](../static/img/cloudevents-example-display-specific-incoming-file.png)
+
+- Select **Save** to save and activate the filter.
 
 
-![Trigger Events Action](../static/img/cloudevents-events-action.png)
 
-The above image shows the selected OpCon event **$CONSOLE:DISPLAY File Arrived**. 
-
-The combination of the filter and the event will result in the ***File Arrived** message being sent to the console every time a file is uploaded to the OpCon MFT Server.
-
-![Example - File Upload](../static/img/cloudevents-events-example-all-files.png)

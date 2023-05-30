@@ -4,6 +4,8 @@ An alternate to the traditional OpCon - Agent - Application integration approach
 
 The approach requires that the application to be integrated supports a Rest-API, which then allows the application to function as the OpCon Agent. Enhancements to the SMANetCom module provides new functionality that communicates directly with the application using standard Rest-API calls (GET, POST, PUT, DELETE).
 
+The OpCon MFT Server is an additional component of the OpCon MFT Agent. 
+
 ![Architecture Overview](../static/img/architecture-overview.png)
 
 OpCon provides the following functions:
@@ -23,6 +25,7 @@ The OpCon MFT Agent provides the following functions:
 - Stores endpoint definitions.
 - Stores encryption definitions.
 - Execution of tasks submitted by OpCon.
+- Accepts webhook registration requests from OpCon for the OpCon MFT Server.
 
 The SMANetCom module has been enhanced to support connections to a remote application using Rest-API calls.
 
@@ -93,3 +96,31 @@ This library provides a set of generalized models that are used by the **Rest-AP
 
 ## MFT Model Library
 This library provides the model definitions used by the OpCon MFT Agent Rest-API. It is used by the **ProxyAgent** and the **LSAMDataRetriever** when submitting requests to the OpCon MFT Agent Rest-API.  
+
+## Triggers
+Triggers are automatically posted by the OpCOn MFT Server to the OpCon Webhook.
+The following triggers events are submitted to OpCon
+
+- MFT Server Logon                  
+- MFT Server Logoff                 
+- MFT Server Upload                 
+- MFT Server Download              
+- MFT Server Start                  
+- MFT Server Copy File              
+- MFT Server Move File                   
+- MFT Server Move Directory             
+- MFT Server Delete File             
+- MFT Server Delete Directory 
+
+## Webhook
+OpCon webhook that receives trigger events and forwards these to the CloudEvents module for processing. Applications that submit trigger events to OpCon are authenticated by OpCon receiving a token from OpCon that must be accompanied with every trigger event. Any trigger event that does not contain a token or and an invalid token are ignored by the webhook.
+
+## CloudEvents
+CloudEvents is a new OpCon feature that receives trigger events from the Webhook. It provides the capability to define Trigger Filters for matches on the incoming messages and then processing a defined action for the match. 
+
+Each incoming message must match the schema definition for Webhook messages. 
+
+The Trigger filters operate on three components of the Trigger message (source - details, type, time).
+
+The Trigger Events (actions) consist of OpCon Events. Standard property definitions for file events exist within the OpCon system which can be used to inject file information 
+into OpCon events.
