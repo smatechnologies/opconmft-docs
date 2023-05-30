@@ -1,4 +1,4 @@
-# Installation
+# Agent Installation
 
 >OpCon MFT Requires OpCon version 22.0 or greater.
 

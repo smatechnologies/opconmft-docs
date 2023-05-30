@@ -1,4 +1,4 @@
-# Installation
+# Server Installation
 
 ## License Keys
 
