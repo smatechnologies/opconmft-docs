@@ -1,4 +1,4 @@
-# Server Installation
+# Server MFT Server Installation
 
 ## License Keys
 
@@ -66,7 +66,9 @@ Select the **FTP Server** Menu Item.
 To enable web file sharing, set a port number for the HTTP port value. It is better to use a specific port instead of the default port (80).
 Select the **Start FTP** button to start the FTP Server.
 
-For additional information on fields associated with configuring the FTP / SFTP server open the help file associated with the OpCOn MFT Server.
+For additional information on fields associated with configuring the FTP / SFTP server open the help file associated with the OpCon MFT Server.
+
+Start the OpCon MFT Server Help file, by Selecting the **Server Help File** in the **OpConMFT n.nn** Application Menu.
 
 ***Server Console -> FTP Server ***
 ***Server Console -> SFTP Server ***
@@ -85,6 +87,8 @@ Select a user in the list and select **Edit** to make changes to the user defini
 Select a user in the list and select **Remove** to remove the user.
 
 For additional information on fields associated with a user definition open the help file associated with the OpCOn MFT Server.
+
+Start the OpCon MFT Server Help file, by Selecting the **Server Help File** in the **OpConMFT n.nn** Application Menu.
 
 ***Server Console -> Users***
 

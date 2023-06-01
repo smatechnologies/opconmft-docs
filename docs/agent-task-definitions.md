@@ -1,4 +1,4 @@
-# Task Definitions
+# MFT Agent Task Definitions
 
 Tasks, endpoints and encryption information are defined using Solution Manager. Task Definitions are persisted within the OpCon database as
 OpConMFT JobTypes while endpoints and encryption information is persisted in the OpCon MFT Agent database. 
