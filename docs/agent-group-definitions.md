@@ -1,4 +1,4 @@
-# Group Definitions
+# MFT Agent Group Definitions
 Group definitions are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
 ![OpCon MFT Agent Details](../static/img/OpCon MFT-agent-details.png)

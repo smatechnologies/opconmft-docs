@@ -1,4 +1,4 @@
-# Triggers
+# MFT Server Triggers
 OpCon supports a new capability called CloudEvents which allows events to be submitted to OpCon through a Webhook. 
 
 OpCon MFT Server supports various triggers that are automatically forwarded to the OpCon CloudEvents environment allowing OpCon to perform actions based on the incoming triggers. These triggers are submitted to OpCon through the OpCon CloudEvents Webhook. During configuration, the OpCon MFT Server is registered with the OpCon CloudEvents Webhook. The registration process ensures that the OpCon MFT server is known to the OpCon system and abel to submit triggers. If the OpCon MFT Server is not correctly registered with the OpCon system all incoming triggers will be ignored.
@@ -174,14 +174,19 @@ Trigger Type  : MFT Server Delete Directory
 
 ## Filter 'time'
 The filter time uses regex patterns. 
-Future versions of the filter process will include more user friendly approaches to set date/time values.  
+Future versions of the filter process will include more user friendly approaches to match date/time values.  
 
 ## Using Regex Expressions
 When defining filters that have data fields, it possible to use wild cards. However, it should be noted that this is a regex expression and not a wild card selection, therefore
   - wildcard **input?.dta** becomes **input..dta**
   - wildcard **input?.\*** becomes **input..\***
   - wildcard **input.\*** becomes **input.\***
-  - wildcard **\*.dta** not supported     
+  - wildcard **\*.dta** not supported 
+
+## Checking for failed conditions
+The **data.result** field can be used to determine if function failed. When combined with the MFT Server Upload / Download types, transfer failure can be detected.
+If the **data.result** value is greater than 0 the function failed.
+Using the **data.result** field and setting the regex expression to **^[1-9]\\d\*$** catches a failed result code.
 
 ## Using Data fields in OpCon Events
 It is possible that in some cases, when defining OpCon events, the data fields are not visible in the drop-down lists. If this is the case then the field can
