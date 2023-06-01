@@ -1,6 +1,6 @@
 ---
 slug: '/'
-sidebar_label: 'OpConMFT'
+sidebar_label: 'Introduction'
 ---
 
 # OpCon MFT

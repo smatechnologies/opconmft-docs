@@ -1,4 +1,4 @@
-# MFT Server Triggers
+# Server MFT Server Triggers
 OpCon supports a new capability called CloudEvents which allows events to be submitted to OpCon through a Webhook. 
 
 OpCon MFT Server supports various triggers that are automatically forwarded to the OpCon CloudEvents environment allowing OpCon to perform actions based on the incoming triggers. These triggers are submitted to OpCon through the OpCon CloudEvents Webhook. During configuration, the OpCon MFT Server is registered with the OpCon CloudEvents Webhook. The registration process ensures that the OpCon MFT server is known to the OpCon system and abel to submit triggers. If the OpCon MFT Server is not correctly registered with the OpCon system all incoming triggers will be ignored.
