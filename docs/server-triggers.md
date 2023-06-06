@@ -1,4 +1,4 @@
-# Server MFT Server Triggers
+# MFT Server Triggers
 OpCon supports a new capability called CloudEvents which allows events to be submitted to OpCon through a Webhook. 
 
 OpCon MFT Server supports various triggers that are automatically forwarded to the OpCon CloudEvents environment allowing OpCon to perform actions based on the incoming triggers. These triggers are submitted to OpCon through the OpCon CloudEvents Webhook. During configuration, the OpCon MFT Server is registered with the OpCon CloudEvents Webhook. The registration process ensures that the OpCon MFT server is known to the OpCon system and abel to submit triggers. If the OpCon MFT Server is not correctly registered with the OpCon system all incoming triggers will be ignored.
@@ -199,7 +199,9 @@ When defining events, the **data** fields associated with the selected Trigger T
 ![Trigger Event Parameter Selection](../static/img/trigger-event-data-object-selection.png)
 
 To select a Filter Type value, select the **magic wand** to the right of the Event definition field.
-The required argument can then be selected from the drop-down list (arguments are prefixed with the DATA and when inserted into the event definition as [[$EXTERNAL.DATA.argument]]).
+The required argument can then be selected from the drop-down list.
+- arguments are prefixed with the DATA and when inserted into the event definition as [[$EXTERNAL.DATA.argument]].
+- when using date properties on events, use [[$DATE]] and not [[$SCHEDULE DATE]] as there is no schedule and the $SCHEDULE DATE has no reference which will cause an error.  
 
 ## Examples
 
@@ -288,5 +290,56 @@ Includes multiple filters to detect when a specific file arrives in a specific d
 
 - Select **Save** to save and activate the filter.
 
+### ***Use OpCon MFT Agent to route a specific incoming file from the OpCon MFT Server***
 
+When a specific file arrives use the OpCon MFT Agent to move the file from the OpCon MFT Server to the target destination, which
+is a directory on the local Windows Server.
 
+First create the OpCon MFT Agent task using a job instance property for the Source file name **[[JI.IFILE]]**. The Source
+Endpoint is the Site Manager definition for the OpCon MFT Server and the Destination Endpoint is a Path Location for the local 
+Windows server (default directory values).   
+
+![OpCon MFT Agent Task ](../static/img/opcon-mft-agent-task-definition.png)
+
+- Select the **+ Add** button.
+- Enter a unique name for the filter in the **Name** field.
+- Select the green **+** bar below Trigger Filters to add a filter.
+- For **Filter On Field** select **source** from the drop-down list.
+
+![Filter Type Source](../static/img/cloudevents-filter-source1.png)
+
+- For **Filter Value** enter the name of the OpCon MFT system (the OpCon MFT Agent name). When selected, the regex checker icon to the right of the field can be used to test the regex expression.
+- Select **OK**.
+
+![Filter Type Upload](../static/img/cloudevents-filter-type-upload.png)
+
+- For **Filter On Field** select **type** from the drop-down list.
+- For **Filter Value** select **MFT Server Upload** from the drop-down list.
+- Select **OK**
+- Select the green **+** bar below Trigger Filters to add a filter for file name. 
+    - As this is a filter on the selected type **MFT Server Upload** the drop-down list now contains values that are associated with the event details. However any previously used values are no longer available in the drop-down list.
+- Select **data.file** from the drop-down.
+- enter **WinChange.json** to indicate which directory the file should arrive in.
+- Select **OK**.
+
+![Filter Type Upload File](../static/img/cloudevents-filter-type-file1.png)
+
+- Select the green **+** bar below Trigger Events to add an event. 
+- For **Event Template** select **$JOB:ADD** from the drop-down list.
+- For **Schedule Date** enter **[[$DATE]]** (not possible to use $SCHEDULE DATE as the event is not associated with a schedule).
+- For **Schedule Name** enter the name of the target schedule.
+- For **Job Name** enter the name of the target job.
+- For **Frequency Name** enter the name of a frequency that is associated with the job.
+
+![Define Trigger Filter](../static/img/cloudevents-job-add-definition.png)
+
+- Add a job instance property associating the received file name with the job instance place holder in the job **IFILE**. Use the EXTERNAL keyword for the file name **[$EXTERNAL.DATA.FILE]]**. 
+
+![Define Job Instance Property](../static/img/cloudevents-job-add-definition-instance-props.png)
+
+- Select **OK**.
+- Select **OK**.
+
+![Example Display Specific File](../static/img/cloudevents-example-display-forward-specific-incoming-file.png)
+
+- Select **Save** to save and activate the filter.
