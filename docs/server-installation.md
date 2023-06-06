@@ -1,4 +1,4 @@
-# Server MFT Server Installation
+# MFT Server Installation
 
 ## License Keys
 
