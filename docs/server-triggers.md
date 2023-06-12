@@ -1,7 +1,7 @@
 # MFT Server Triggers
 OpCon supports a new capability called CloudEvents which allows events to be submitted to OpCon through a Webhook. 
 
-OpCon MFT Server supports various triggers that are automatically forwarded to the OpCon CloudEvents environment allowing OpCon to perform actions based on the incoming triggers. These triggers are submitted to OpCon through the OpCon CloudEvents Webhook. During configuration, the OpCon MFT Server is registered with the OpCon CloudEvents Webhook. The registration process ensures that the OpCon MFT server is known to the OpCon system and abel to submit triggers. If the OpCon MFT Server is not correctly registered with the OpCon system all incoming triggers will be ignored.
+OpCon MFT Server supports various triggers that are automatically forwarded to the OpCon CloudEvents environment allowing OpCon to perform actions based on the incoming triggers. These triggers are submitted to OpCon through the OpCon CloudEvents Webhook. During configuration, the OpCon MFT Server is registered with the OpCon CloudEvents Webhook. The registration process ensures that the OpCon MFT server is known to the OpCon system and able to submit triggers. If the OpCon MFT Server is not correctly registered with the OpCon system all incoming triggers from that server will be ignored.
 
 ## Event Trigger Types
 The following event trigger types are supported:
@@ -20,7 +20,7 @@ Trigger ID | Trigger Type                      | Description
 **11**     | MFT Server Delete Directory       | a directory has been deleted from the MFT server   
 
 ## Using CloudEvents
-The CloudEvents implementation allows the mapping of incoming trigger events to OpCon Events allowing OpCon to perform actions based on the trigger events received. 
+The CloudEvents implementation allows the mapping of incoming trigger events to OpCon Events allowing OpCon to perform actions based on the trigger events received.
 Trigger filters are defined to reference specific event triggers received and Trigger Events define the action to be taken.
 
 To define trigger filter event mapping open the **CloudEvents Triggers** item in the **Library Management** section of Solution Manager.
@@ -200,8 +200,8 @@ When defining events, the **data** fields associated with the selected Trigger T
 
 To select a Filter Type value, select the **magic wand** to the right of the Event definition field.
 The required argument can then be selected from the drop-down list.
-- arguments are prefixed with the DATA and when inserted into the event definition as [[$EXTERNAL.DATA.argument]].
-- when using date properties on events, use [[$DATE]] and not [[$SCHEDULE DATE]] as there is no schedule and the $SCHEDULE DATE has no reference which will cause an error.  
+- All information contained within the CloudEvents event and available as a property is prefixed with the identifier EXTERNAL.DATA.
+- When using date properties on events, use [[$DATE]] and not [[$SCHEDULE DATE]] as there is no schedule and the $SCHEDULE DATE has no reference which will cause an error.  
 
 ## Examples
 
@@ -234,7 +234,7 @@ A simple CloudEvent to display the name of all incoming files received by the de
 - In the message section 
     - enter **File **.
     - select the **Magic Wand** to the right of the field.
-    - select **$ DATA.FILE** from the drop-down list and select **OK**.
+    - select **$EXTERNAL.DATA.FILE** from the drop-down list and select **OK**.
     - enter ** Arrived**.
 - Select **OK**.    
 
@@ -277,9 +277,9 @@ Includes multiple filters to detect when a specific file arrives in a specific d
 - In the message section 
     - enter **File **.
     - select the **Magic Wand** to the right of the field.
-    - select **$ DATA.FOLDER** from the drop-down list and select **OK**.
+    - select **$EXTERNAL.DATA.FOLDER** from the drop-down list and select **OK**.
     - enter **/**.
-    - select **$ DATA.FILE** from the drop-down list and select **OK**.
+    - select **$EXTERNAL.DATA.FILE** from the drop-down list and select **OK**.
     - enter ** Arrived**.
   
 ![Define Trigger Filter](../static/img/cloudevents-filter-event-specific-upload.png)
@@ -301,6 +301,7 @@ Windows server (default directory values).
 
 ![OpCon MFT Agent Task ](../static/img/opcon-mft-agent-task-definition.png)
 
+Next, create the CloudEvents Trigger Definition from the CloudEvents Triggers screen.
 - Select the **+ Add** button.
 - Enter a unique name for the filter in the **Name** field.
 - Select the green **+** bar below Trigger Filters to add a filter.
@@ -319,14 +320,14 @@ Windows server (default directory values).
 - Select the green **+** bar below Trigger Filters to add a filter for file name. 
     - As this is a filter on the selected type **MFT Server Upload** the drop-down list now contains values that are associated with the event details. However any previously used values are no longer available in the drop-down list.
 - Select **data.file** from the drop-down.
-- enter **WinChange.json** to indicate which directory the file should arrive in.
+- enter **WinChange.json** to ensure that this Event will only move the desired file.
 - Select **OK**.
 
 ![Filter Type Upload File](../static/img/cloudevents-filter-type-file1.png)
 
 - Select the green **+** bar below Trigger Events to add an event. 
 - For **Event Template** select **$JOB:ADD** from the drop-down list.
-- For **Schedule Date** enter **[[$DATE]]** (not possible to use $SCHEDULE DATE as the event is not associated with a schedule).
+- For **Schedule Date** enter **[[$DATE]]** (it is not possible to use $SCHEDULE DATE as the event is not associated with a schedule).
 - For **Schedule Name** enter the name of the target schedule.
 - For **Job Name** enter the name of the target job.
 - For **Frequency Name** enter the name of a frequency that is associated with the job.

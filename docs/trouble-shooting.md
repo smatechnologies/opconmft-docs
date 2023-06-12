@@ -339,4 +339,3 @@ table, but visible in the user interface. These fields are decoded during the jo
 During job execution, the JORS indicator value is stored in field code 62 of the stored job definition.
 During job execution, the OpCon Agent jobid is stored in field code 25001 of the stored job definition. If the job completes successfully, this code
 is set to 0, otherwise it will contain the OpCon Agent jobid. This value is used to restart a failed OpCon Agent task.
-
