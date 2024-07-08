@@ -224,7 +224,7 @@ June 2023
 
 :white_check_mark: **MFT-256**: When looking at a share the share creating control should not be visible.
 
-:white_check_mark: **MFT-257**: MFT server could only send events successfully on windows builds lower than 1903 which in server OSes was anything lower than 2022. 
+:white_check_mark: **MFT-257**: MFT server could not send events successfully on windows builds lower than 1903 which in server OSes was anything lower than 2022. 
 
 :white_check_mark: **MFT-258**: Fixed an issue with Virtual folders not appearing for user.
 
