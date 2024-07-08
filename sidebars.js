@@ -1,7 +1,8 @@
 module.exports = {
   mySidebar: [
     'index',
-    'architecture',
+    'release-notes',
+    'introduction',
     'agent-installation',
     'agent-endpoint-definitions',
     'agent-encryption-definitions',
@@ -13,5 +14,6 @@ module.exports = {
     'server-virtual-folders',
     'security',
     'trouble-shooting',
+    'architecture',
   ],
 };
