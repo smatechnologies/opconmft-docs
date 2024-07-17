@@ -1,5 +1,6 @@
 ---
 sidebar_label: 'Introduction'
+hide_title: 'true'
 ---
 
 # OpCon MFT

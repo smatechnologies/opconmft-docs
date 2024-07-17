@@ -1,3 +1,8 @@
+---
+sidebar_label: 'Architecture'
+hide_title: 'true'
+---
+
 # Architecture
 
 An alternate to the traditional OpCon - Agent - Application integration approach was developed providing a simpler integration approach for future applications. 

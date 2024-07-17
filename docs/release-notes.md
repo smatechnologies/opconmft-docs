@@ -1,5 +1,6 @@
 ---
-sidebar_label: "Release notes"
+sidebar_label: 'Release Notes'
+hide_title: 'true'
 ---
 
 # OpConMFT release notes

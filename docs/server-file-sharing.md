@@ -1,3 +1,8 @@
+---
+sidebar_label: 'MFT Server File Sharing'
+hide_title: 'true'
+---
+
 # MFT Server File Sharing
 
 A User Directory page is only accessible to an individual user account after logging in from their web browser with their username and password. Here, you can view the entire directory structure accessible to that user account, download files, and upload files. 

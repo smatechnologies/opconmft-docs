@@ -1,3 +1,8 @@
+---
+sidebar_label: 'Troubleshooting'
+hide_title: 'true'
+---
+
 # Trouble Shooting
 The OpCon MFT Implementation uses the SMANetCom ProxyAgent Framework for communication between OpCon and the OpCon MFT Agent. There is
 no 'OpCon' Agent to provide the communications connection, instead SMANetCom communicates directly with the external OpCon MFT Agent. 

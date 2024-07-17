@@ -1,3 +1,8 @@
+---
+sidebar_label: 'MFT Agent Task Definitions'
+hide_title: 'true'
+---
+
 # MFT Agent Task Definitions
 
 Tasks, endpoints and encryption information are defined using Solution Manager. Task Definitions are persisted within the OpCon database as

@@ -1,5 +1,6 @@
 ---
 sidebar_label: 'MFT Agent'
+hide_title: 'true'
 ---
 
 # Getting started

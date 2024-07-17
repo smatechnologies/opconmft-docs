@@ -1,3 +1,8 @@
+---
+sidebar_label: 'MFT Agent Encryption Definitions'
+hide_title: 'true'
+---
+
 # MFT Agent Encryption Definitions
 
 The OpCon MFT Agent incorporates abilities to encrypt and decrypt files using PGP cryptography and for managing a PGP keyring. PGP is a commonly recognized method of what is referred to as strong cryptography. Cryptography is the science of using mathematics to encrypt and decrypt data. PGP cryptography enables you to protect sensitive information when it is stored locally or transmitted across the Internet so it cannot be read by anyone except the intended recipient.

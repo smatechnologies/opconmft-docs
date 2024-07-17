@@ -1,3 +1,8 @@
+---
+sidebar_label: 'MFT Server Installation'
+hide_title: 'true'
+---
+
 # MFT Server Installation
 
 ## License Keys

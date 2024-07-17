@@ -1,3 +1,8 @@
+---
+sidebar_label: 'MFT Server Virtual Folders'
+hide_title: 'true'
+---
+
 # MFT Server Virtual Folders
 
 Virtual Folders are non-existent folders that are nonetheless visible to connected users.  

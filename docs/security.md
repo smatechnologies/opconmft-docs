@@ -1,3 +1,8 @@
+---
+sidebar_label: Security'
+hide_title: 'true'
+---
+
 # Security
 OpCon MFT supports both connection-level security and file-level security. 
 

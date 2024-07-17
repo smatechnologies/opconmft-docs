@@ -1,4 +1,10 @@
+---
+sidebar_label: 'MFT Agent Endpoint Definitions'
+hide_title: 'true'
+---
+
 # MFT Agent Endpoint Definitions
+
 Endpoints are currently defined using the OpCon MFT Agent Web Server. A connection to the OpCon MFT Agent Web Server requires a user / password for system where the OpCon MFT Agent is installed (not an OpCon user).
 
 ![OpCon MFT Agent Details](../static/img/opconmft-agent-details.png)
