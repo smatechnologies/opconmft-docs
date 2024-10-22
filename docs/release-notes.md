@@ -5,6 +5,60 @@ hide_title: 'true'
 
 # OpConMFT release notes
 
+## OpConMFT ver 3.13.5
+October 2024
+
+:eight_spoked_asterisk: **MFT-506**: Fixed an issue with MFT not recognizing group settings.
+
+:eight_spoked_asterisk: **MFT-434**: Fixed an issue with download a file from azure blob storage.
+
+:eight_spoked_asterisk: **MFT-554**: Reconciliation page is removed from WebUI-Jobs and can't access it with direct link.
+
+:eight_spoked_asterisk: **MFT-537**: Fixed an issue with configuring Azure blob storage sites in WebUI.
+
+:eight_spoked_asterisk: **MFT-538**: Updated WebUI-FTP server page with create new certificate feature.
+
+:eight_spoked_asterisk: **MFT-539**: Updated WebUI-FTP server page with import certificate feature.
+
+:eight_spoked_asterisk: **MFT-541**: Updated WebUI-FTP server page with view and export certificate feature.
+
+:eight_spoked_asterisk: **MFT-549**: Fixed an issue with displaying fakepath in impoting a ssh key.
+
+:eight_spoked_asterisk: **MFT-550**: Fixed an issue with viewing TLS certificate details in WebUI.
+
+:eight_spoked_asterisk: **MFT-551**: Fixed an issue with deleting debug files in WebUI-settings-Debug Data.
+
+:eight_spoked_asterisk: **MFT-552**: Added "Amazon web services S3" server type back in configurator-managed sites-add.
+
+:eight_spoked_asterisk: **MFT-555**: Fixed an issue in Configurator while adding a site with server type "Amazon S3".
+
+:eight_spoked_asterisk: **MFT-567**: MFT Managed Sites honor advanced SSH method settings.
+
+:eight_spoked_asterisk: **MFT-564**: Fixed issue with algorithms list in ciphers.
+
+:eight_spoked_asterisk: **MFT-565**: Fixed an issue with saving loggging settings, added save button to save settings.
+
+:eight_spoked_asterisk: **MFT-571**: Fixed an issue with WebUI site test button to save all the settings.
+
+:eight_spoked_asterisk: **MFT-574**: Fixed an issue with WebUI-Managed Sites-adding site with account key for AZ blob storage server type.
+
+:eight_spoked_asterisk: **MFT-577**: Managed site SSHKeyName setting being stored inconsistently could break settings load in Web UI.
+
+:eight_spoked_asterisk: **MFT-602**: Upgrade installation with exe, installer didn't use existing installation directory.
+
+:eight_spoked_asterisk: **MFT-579**: Fixed SSH keys page issues that include import, create buttons not working and exporting key pair.
+
+:eight_spoked_asterisk: **MFT-608**: Path endpoints with credentials silently failed when used. The test button is still inoperable but they now work.
+
+:white_check_mark: **MFT-417**: OpconMFt supports FTP, SFTP connections to IBMi and zOS platforms.
+
+:white_check_mark: **MFT-444**: Limit file uploads to a maximum size.
+
+:white_check_mark: **MFT-455**: When logging into the file server from a browser authentication is now done via a brandable/stylable form instead of a browser popup.
+
+:white_check_mark: **MFT-562**: TLS certificates and FTP Server web pages are updated with functionality to create, import, view, delete and Export certificates. Also "Add Intermediate Certificate" option included.
+
+
 ## OpConMFT ver 3.13.4
 July 2024
 
