@@ -5,19 +5,7 @@ hide_title: 'true'
 
 # MFT Server Installation
 
-## License Keys
-
-### Task Based License 2.0
-
->***Before starting an installation, an updated OpCon License key including a license for the OpConMFT Server must be obtained. Failure to do this will result in the OpCon MFT Agent Type not being visible within Solution Manager.***
-
-### Other License Types
-
->***Before starting an installation, an updated OpCon License key including an OpConMFT Agent type and an OpConMFT Server must be obtained. Failure to do this will result in a license Violation when the defined OpCon MFT agent is activated in OpCon and will result in OpCon termination if the activated OpConMFT Agent is not deactivated within the specified time.***
-
 ## General
-
-OpCon MFT Server requires OpCon version 22.4 or greater and OpCon MFT version 3.13.1 or greater.
 
 The OpCon MFT Server is installed automatically as part of the OpCon MFT Agent. 
 

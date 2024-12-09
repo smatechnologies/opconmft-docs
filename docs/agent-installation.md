@@ -5,13 +5,6 @@ hide_title: 'true'
 
 # MFT Agent Installation
 
->OpCon MFT Requires OpCon version 22.0 or greater.
-
->***Before starting an installation, an updated OpCon License key including an OpConMFT Agent type must be obtained. Failure to do this will result in a license 
-Violation when the defined OpCon MFT agent is activated in opCon and will result in OpCon termination if the activated OpConMFT Agent is not deactivated within
-the specified time.***
-
-
 The OpCon MFT environment consists of an OpCon MFT Agent and the SMAMftAgentProxy that provides the communication link between OpCon and the OpCon MFT Agent.
 
 The SMAMftAgentProxy is contained within the SMANetCom environment and is installed automatically when the core SMA OpCon component is installed. 
